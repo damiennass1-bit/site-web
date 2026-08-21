@@ -16,7 +16,8 @@
 | 1 | Landing page reconstruite en HTML statique | **fait** |
 | 2 | Déployée sur Netlify, dépôt lié en déploiement continu | **fait** |
 | 3 | DNS redirigé vers Netlify | **fait** — le site public n'est plus servi par Webador |
-| 4 | Certificat HTTPS | **fait** — Let's Encrypt actif, renouvellement automatique |
+| 4 | Certificat HTTPS | **fait** — Let's Encrypt, renouvellement automatique le 19 novembre |
+| 4b | Formulaire de contact | **fait** — testé de bout en bout, notification e-mail active |
 | 5 | `www` comme domaine principal | à faire — un clic |
 | 6 | Code EPP | demandé au support Webador, aucune option en libre-service |
 | 7 | Transfert du domaine | après réception du code, environ 5 jours |
@@ -34,6 +35,12 @@ la demande de validation du transfert arrivera donc bien à destination.
 Sur une propriété « domaine » de la Search Console, le champ des sitemaps
 attend l'URL complète — `sitemap.xml` seul est refusé, Google n'ayant aucun
 préfixe à appliquer.
+
+**Netlify Forms enregistre les demandes sans prévenir personne.** La
+notification par e-mail se configure séparément, sous *Project configuration →
+Notifications → Emails and webhooks*, avec l'événement « New form
+submission ». Sans elle, une demande de prospect reste dans un tableau de bord
+que personne ne consulte.
 
 Les enregistrements DNS en place chez Webador :
 
