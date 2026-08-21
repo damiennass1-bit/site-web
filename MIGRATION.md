@@ -14,17 +14,25 @@
 | # | Étape | État |
 |---|---|---|
 | 1 | Landing page reconstruite en HTML statique | **fait** |
-| 2 | Déployée sur Netlify, dépôt lié en déploiement continu | **fait** — https://solvex-automation.netlify.app |
-| 3 | Code EPP demandé à Webador | en attente de l'e-mail |
-| 4 | Domaine pointé vers Netlify (DNS) | **à faire — étape suivante** |
-| 5 | Transfert du domaine chez un nouveau bureau d'enregistrement | après réception du code |
-| 6 | Redirections et Search Console | après la bascule DNS |
-| 7 | Résiliation de Webador | avant le 14 septembre |
+| 2 | Déployée sur Netlify, dépôt lié en déploiement continu | **fait** |
+| 3 | DNS de `solvex-automation.com` redirigé vers Netlify | **fait** — le site public est servi par Netlify, plus par Webador |
+| 4 | Certificat HTTPS | vérification DNS réussie, émission en cours |
+| 5 | `www` comme domaine principal | à faire — un clic |
+| 6 | Transfert du domaine avec le code EPP | en attente de l'e-mail Webador |
+| 7 | Google Search Console | à faire |
+| 8 | Résiliation de Webador | **après** le transfert, avant le 14 septembre |
 
-**Le transfert du domaine n'est pas un prérequis à la mise en ligne.** Changer
-les enregistrements DNS chez Webador suffit à faire pointer
-`solvex-automation.com` vers Netlify, avec effet en quelques heures. Le
-transfert, qui prend environ cinq jours, se fait ensuite tranquillement.
+Les enregistrements DNS en place chez Webador :
+
+| Type | Nom | Valeur |
+|---|---|---|
+| `A` | *(vide)* | `75.2.60.5` — adresse officielle de Netlify pour un domaine apex |
+| `CNAME` | `www` | `solvex-automation.netlify.app` |
+| `MX` | *(vide)* | `mail.webador.com` — inchangé |
+
+Webador interdisant la modification des serveurs de noms, la délégation DNS
+complète était impossible : seuls les enregistrements `A` et `CNAME` ont été
+modifiés, ce qui laisse la messagerie intacte.
 
 ## Ce que dit la situation actuelle
 
