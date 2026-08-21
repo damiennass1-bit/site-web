@@ -1,0 +1,20 @@
+# Redirections des anciennes URLs Webador vers le nouveau site.
+# Netlify lit ce fichier automatiquement (il doit rester dans public/).
+# Le code 301 = « déplacé définitivement » : c'est lui qui transmet le
+# référencement acquis à la nouvelle adresse.
+#
+# Les trois URLs ci-dessous sont celles réellement indexées par Google
+# au 21 août 2026 (recherche « site:solvex-automation.com »).
+#
+# Les ancres de destination (#solutions, #a-propos) sont à ajuster selon
+# les identifiants de sections présents dans la landing page. Si l'ancre
+# n'existe pas, le visiteur arrive simplement en haut de la page d'accueil :
+# la redirection reste valide et aucun lien n'est cassé.
+
+/nos-solutions    /#solutions    301
+/a-propos         /#a-propos     301
+
+# Variantes avec barre oblique finale, au cas où des liens externes
+# pointeraient dessus.
+/nos-solutions/   /#solutions    301
+/a-propos/        /#a-propos     301

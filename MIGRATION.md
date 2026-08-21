@@ -1,6 +1,7 @@
 # Migration Webador → site fait maison (Netlify)
 
-**Domaine :** `solvex-automation.com`
+**Domaine :** `solvex-automation.com` — servi **avec `www`** :
+`https://www.solvex-automation.com`
 **Hébergeur actuel :** Webador Pro — 12,00 €/mois, depuis le 14 janvier 2026
 **Prochaine échéance affichée :** 14 septembre 2026
 **Renouvellement du domaine :** 14 janvier 2027 — 20,00 €/an (ligne facturée à part)
@@ -21,13 +22,17 @@ quelques heures.
 | 1 | Envoyer la landing page dans `public/` | 5 min | GitHub |
 | 2 | Importer le dépôt et déployer | 10 min | Netlify |
 | 3 | Ajouter le domaine et relever les valeurs DNS | 5 min | Netlify |
-| 4 | Remplacer l'enregistrement `A` et le `CNAME www` | 10 min | Webador |
+| 4 | Remplacer le `CNAME www` et l'enregistrement `A` | 10 min | Webador |
 | 5 | Propagation DNS puis activation du HTTPS | 1 à 24 h | — |
 
 À l'issue de l'étape 5, le nouveau site est en ligne sur le vrai domaine.
 
 **À l'étape 4, ne toucher qu'aux enregistrements `A` et `CNAME`.** Laisser
 les `MX` intacts : ils gèrent l'e-mail, pas le site.
+
+Le site étant servi sur `www.solvex-automation.com`, c'est le `CNAME www` qui
+porte le trafic réel — le `A` sur `@` ne sert qu'à rediriger la version sans
+`www`.
 
 Si Webador refuse la modification des enregistrements DNS, basculer les
 *nameservers* du domaine vers ceux de Netlify — l'option se trouve dans le
@@ -65,17 +70,17 @@ l'intérêt de la migration.
 
 La facturation est mensuelle, prochaine échéance le **14 septembre 2026**.
 Boucler la migration avant cette date évite de payer un mois de plus.
-Un transfert de `.com` prend environ 5 jours, plus 24 à 48 h pour obtenir le
-code d'autorisation — c'est jouable, à condition de lancer la demande de code
-tout de suite.
+Un transfert de `.com` prend environ 5 jours. Le code d'autorisation
+s'affichant directement dans l'interface Webador (voir étape 3), il n'y a
+aucun délai d'attente à ce niveau : le transfert peut être lancé le jour même,
+ce qui laisse une marge confortable.
 
 | Quand | Quoi |
 |---|---|
-| **Jour 1** | Demander le code EPP à Webador (étape 3) + envoyer la landing page dans `public/` (étape 1) |
-| **Jour 2-3** | Réception du code → lancer le transfert chez le nouveau registrar |
-| **Jour 2-4** | Déployer sur Netlify et tout tester sur l'URL `.netlify.app` (étapes 2 et 4) |
-| **Jour 7-8** | Transfert finalisé → brancher le domaine sur Netlify, activer le HTTPS (étape 5) |
-| **Jour 8-14** | Vérification en conditions réelles, redirections SEO (étape 6) |
+| **Jour 1** | Récupérer le code EPP (étape 3, immédiat) et lancer le transfert + envoyer la landing page dans `public/` (étape 1) |
+| **Jour 1-2** | Déployer sur Netlify et tout tester sur l'URL `.netlify.app` (étapes 2 et 4) |
+| **Jour 5-6** | Transfert finalisé → brancher le domaine sur Netlify, activer le HTTPS (étape 5) |
+| **Jour 6-12** | Vérification en conditions réelles, redirections SEO (étape 6) |
 | **Avant le 14 septembre** | Résilier Webador (étape 7) |
 
 Si le calendrier dérape, ce n'est pas grave : un mois supplémentaire coûte
@@ -185,27 +190,29 @@ Chaque `git push` redéploiera le site automatiquement.
 
 ---
 
-## Étape 3 — Demander le code EPP à Webador
+## Étape 3 — Récupérer le code EPP chez Webador
 
-À lancer **le premier jour**, car c'est le maillon le plus lent.
+Bonne nouvelle : le code s'affiche directement, il n'y a pas de délai d'envoi
+par e-mail.
 
-1. Dans le compte Webador, section **Nom de domaine → Gérer les noms de
-   domaine**
-2. Désactiver le **verrouillage du transfert** (*transfer lock*)
-3. Demander le **code d'autorisation** — aussi appelé code EPP ou code Auth.
-   Il est envoyé par e-mail, parfois sous 24 à 48 h.
-4. Vérifier que l'**e-mail du contact propriétaire** (WHOIS) est bien une
-   adresse accessible : la validation du transfert y sera envoyée. Si c'est
-   `info@solvex-automation.com`, qui est inactive, **la changer d'abord** pour
-   une adresse relevée — sinon l'e-mail de validation sera perdu et le
-   transfert échouera. C'est le point de vigilance principal de cette étape.
+**Chemin exact :** Éditeur Webador → **Mon abonnement** → **Gérer les noms de
+domaine** → **Transférer**. Le code apparaît à l'écran.
+
+- [ ] Noter le code — il a une **durée de validité limitée** (quelques jours
+      selon les registrars). Ne le demander que lorsque le compte chez le
+      nouveau registrar est prêt.
+- [ ] Vérifier au même endroit que le **verrouillage du transfert** est
+      désactivé.
+- [ ] Vérifier l'**e-mail du contact propriétaire** (WHOIS) : c'est là
+      qu'arrivera la demande de validation du transfert. S'il pointe vers
+      `info@solvex-automation.com`, qui est inactive, **le changer d'abord**
+      pour une adresse réellement relevée — sinon la validation sera perdue et
+      le transfert échouera.
 
 Le domaine étant facturé à part (20 €/an), il ne s'agit pas d'un domaine
-« offert » lié au forfait, ce qui simplifie le transfert. À confirmer malgré
+« offert » soudé au forfait, ce qui simplifie le transfert. À confirmer malgré
 tout auprès du support Webador : demander explicitement si la résiliation de
 l'abonnement Pro entraîne la perte du domaine.
-
----
 
 ## Étape 4 — Tout tester sur l'URL Netlify
 
@@ -262,14 +269,15 @@ ne changent pas tant qu'on ne les modifie pas.
 
 | Type    | Nom   | Valeur                            |
 |---------|-------|-----------------------------------|
-| `A`     | `@`   | *(adresse IP fournie par Netlify)* |
-| `CNAME` | `www` | *(nom-du-site.netlify.app)*       |
+| `CNAME` | `www` | *(nom-du-site.netlify.app)* — le site lui-même |
+| `A`     | `@`   | *(adresse IP fournie par Netlify)* — redirige vers `www` |
 
 > Utiliser **les valeurs exactes affichées par Netlify** — le tableau
 > ci-dessus ne montre que le format attendu.
 
-4. Choisir le domaine principal, avec ou sans `www`. Netlify redirige
-   automatiquement l'autre vers celui-ci.
+4. Définir **`www.solvex-automation.com` comme domaine principal** — c'est
+   la forme actuellement indexée par Google. Netlify redirige automatiquement
+   la version sans `www` vers celle-ci.
 5. Activer le **certificat HTTPS** (Let's Encrypt, gratuit, un clic une fois
    les DNS propagés)
 
@@ -291,29 +299,56 @@ Ils sont indépendants des enregistrements `A` et `CNAME` du site web.
 
 ## Étape 6 — Préserver le référencement Google
 
-Si le site Webador avait plusieurs pages indexées, rediriger les anciennes
-URLs évite les erreurs 404 et la perte de position dans les résultats.
+### Inventaire des pages actuellement indexées
 
-Créer un fichier `public/_redirects` :
+Relevé le 21 août 2026 via la recherche `site:solvex-automation.com`.
+**Trois pages seulement** sont indexées — le chantier de redirection est donc
+minimal.
 
-```
-# ancienne-url    nouvelle-url    code
-/a-propos         /#a-propos      301
-/nos-services     /#services      301
-/contact          /#contact       301
-```
+| URL actuelle | Titre indexé par Google | Description indexée |
+|---|---|---|
+| `/` | Solvex Automation : on regarde où vous perdez du temps… | On code l'outil dont vous avez besoin : devis, factures, suivi d'activité, gestion clients, planning pensé pour votre métier, pas un logiciel générique. |
+| `/nos-solutions` | Logiciels de gestion sur mesure, automatisation, IA | Nous analysons vos processus, combinons logiciels sur mesure, automatisations et IA pour résoudre précisément vos « points douloureux ». Une approche sur mesure. |
+| `/a-propos` | À propos — Damien Nass, fondateur de Solvex Automation | L'humain derrière l'agence : Damien Nass, fondateur, et notre approche généraliste de la digitalisation. Mon parcours et ma vision. |
 
-Le code `301` (« déplacé définitivement ») transmet le référencement à la
-nouvelle adresse.
+Ces titres et descriptions sont **déjà connus de Google et déjà associés au
+domaine**. Les réutiliser — ou les reprendre de près — dans les balises
+`<title>` et `<meta name="description">` de la nouvelle page limite la
+rupture au moment de la bascule.
 
-Ensuite :
+Aucune page `/contact` n'est indexée : rien à rediriger de ce côté.
 
-- [ ] Ajouter `solvex-automation.com` à **Google Search Console**
-- [ ] Soumettre le sitemap, ou au minimum l'URL d'accueil
-- [ ] Vérifier après quelques jours qu'aucune erreur 404 n'est signalée
-- [ ] Mettre à jour la **fiche Google Business** le cas échéant
+### Redirections
 
----
+Le fichier **`public/_redirects`** est déjà en place dans ce dépôt avec ces
+URLs. Les ancres de destination (`#solutions`, `#a-propos`) restent à ajuster
+selon les identifiants de sections de la landing page. Si une ancre n'existe
+pas, le visiteur arrive simplement en haut de la page d'accueil : la
+redirection reste valide, aucun lien n'est cassé.
+
+### Conserver le `www`
+
+Le site est servi sur `https://www.solvex-automation.com`. C'est cette forme
+que Google a indexée. Il faut donc définir **`www.solvex-automation.com`
+comme domaine principal** dans Netlify (*Domain management → Options → Set as
+primary domain*), et laisser Netlify rediriger la version sans `www` vers
+celle-ci. Choisir l'inverse ajouterait une redirection sur chaque visite et
+une réindexation inutile.
+
+### Google Search Console
+
+Le message « Êtes-vous le propriétaire de solvex-automation.com ? » indique
+que **le domaine n'est pas encore revendiqué**. À faire :
+
+- [ ] Créer la propriété sur https://search.google.com/search-console
+- [ ] Vérifier la propriété (le plus simple : un enregistrement DNS `TXT`
+      ajouté chez le registrar)
+- [ ] Après la bascule, demander la réindexation des trois URLs
+- [ ] Surveiller le rapport de couverture pendant deux à quatre semaines
+
+Utile à savoir : l'outil « changement d'adresse » de la Search Console ne
+s'applique pas ici — il ne sert que lorsqu'on change réellement de nom de
+domaine, ce qui n'est pas le cas.
 
 ## Étape 7 — Résilier Webador
 
