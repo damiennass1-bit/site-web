@@ -174,21 +174,36 @@ git push -u origin claude/webador-migration-ysovxe
 
 ## Étape 2 — Déployer sur Netlify (URL de test)
 
-1. Créer un compte sur https://app.netlify.com (gratuit)
-2. **Add new site → Import an existing project → GitHub**
-3. Autoriser l'accès au dépôt `damiennass1-bit/site-web`
-4. Sélectionner la branche
-5. Netlify lit `netlify.toml` automatiquement : dossier publié `public/`,
-   pas de commande de build
-6. **Deploy**
+Le projet Netlify est **déjà créé** sur le compte damien.nass1@gmail.com :
 
-Le site est accessible sur une URL du type `https://nom-aleatoire.netlify.app`.
-`solvex-automation.com` n'est pas encore concerné : Webador continue de
-tourner normalement.
+- Nom du projet : `solvex-automation`
+- Identifiant : `e1ffba73-b98c-4062-a870-75e65799d1cd`
+- Tableau de bord : https://app.netlify.com/projects/solvex-automation
+- URL de test : https://solvex-automation.netlify.app
+- Netlify Forms : **activé**
 
-Chaque `git push` redéploiera le site automatiquement.
+Netlify lit `netlify.toml` automatiquement : dossier publié `public/`, aucune
+commande de build.
 
----
+### Brancher le dépôt — l'étape qui met le site en ligne
+
+Le projet est créé mais **vide** : il reste à lui indiquer où trouver le code.
+Depuis le tableau de bord Netlify :
+
+**Project configuration → Build & deploy → Continuous deployment → Link
+repository → GitHub → `damiennass1-bit/site-web`**, branche
+`claude/webador-migration-ysovxe`.
+
+Ne rien saisir dans « Build command » ni « Publish directory » : `netlify.toml`
+s'en charge. Puis **Deploy**.
+
+Netlify récupère lui-même le code depuis GitHub, ce qui rend l'opération
+indépendante de tout téléversement manuel. Chaque `git push` redéploiera
+ensuite le site automatiquement, et chaque branche obtiendra une *deploy
+preview* permettant de vérifier une modification avant publication.
+
+`solvex-automation.com` n'est pas encore concerné à ce stade : Webador continue
+de servir le site public normalement.
 
 ## Étape 3 — Récupérer le code EPP chez Webador
 
