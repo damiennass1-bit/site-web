@@ -1,6 +1,7 @@
 # site-web
 
-Site vitrine statique, hébergé sur Netlify, en remplacement du site Webador.
+Site vitrine statique de **Solvex Automation** (`solvex-automation.com`),
+hébergé sur Netlify, en remplacement du site Webador.
 
 ## Structure
 

@@ -1,57 +1,98 @@
 # Migration Webador → site fait maison (Netlify)
 
-Guide complet pour remplacer le site Webador par ce dépôt, sans coupure
-de service et sans perdre le référencement ni les e-mails.
+**Domaine :** `solvex-automation.com`
+**Hébergeur actuel :** Webador Pro — 12,00 €/mois, depuis le 14 janvier 2026
+**Prochaine échéance affichée :** 14 septembre 2026
+**Renouvellement du domaine :** 14 janvier 2027 — 20,00 €/an (ligne facturée à part)
+**E-mail :** `info@solvex-automation.com` — statut *Inactif*, 101,7 Ko utilisés
 
-Le domaine est actuellement **acheté via Webador** : c'est le cas qui demande
-le plus d'attention, car le nom de domaine et l'hébergement sont liés au même
-abonnement.
+---
+
+## Ce que dit la situation actuelle
+
+**Le transfert du domaine est possible dès maintenant.** Le domaine a été
+enregistré le 14 janvier 2026, soit il y a plus de 60 jours : la période de
+blocage ICANN qui interdit les transferts sur les domaines récents est passée.
+
+**Le risque e-mail est quasi nul.** La boîte `info@` est inactive et contient
+101,7 Ko — autant dire rien. Il n'y a pas de historique de messages à
+rapatrier. Il faudra tout de même recréer l'adresse ailleurs si elle figure
+sur le site, des cartes de visite ou des devis.
+
+**Le coût actuel est de 164 €/an**, contre une douzaine d'euros après
+migration. Détail plus bas.
+
+**⚠️ Ne pas accepter l'offre « Économiser 24 € par an / Passer à la
+facturation annuelle ».** Elle engage pour douze mois et ferait perdre tout
+l'intérêt de la migration.
+
+---
+
+## Calendrier
+
+La facturation est mensuelle, prochaine échéance le **14 septembre 2026**.
+Boucler la migration avant cette date évite de payer un mois de plus.
+Un transfert de `.com` prend environ 5 jours, plus 24 à 48 h pour obtenir le
+code d'autorisation — c'est jouable, à condition de lancer la demande de code
+tout de suite.
+
+| Quand | Quoi |
+|---|---|
+| **Jour 1** | Demander le code EPP à Webador (étape 3) + envoyer la landing page dans `public/` (étape 1) |
+| **Jour 2-3** | Réception du code → lancer le transfert chez le nouveau registrar |
+| **Jour 2-4** | Déployer sur Netlify et tout tester sur l'URL `.netlify.app` (étapes 2 et 4) |
+| **Jour 7-8** | Transfert finalisé → brancher le domaine sur Netlify, activer le HTTPS (étape 5) |
+| **Jour 8-14** | Vérification en conditions réelles, redirections SEO (étape 6) |
+| **Avant le 14 septembre** | Résilier Webador (étape 7) |
+
+Si le calendrier dérape, ce n'est pas grave : un mois supplémentaire coûte
+12 €. Mieux vaut payer un mois de plus que de résilier trop tôt et perdre le
+domaine.
 
 ---
 
 ## Règle d'or
 
-**On ne touche au domaine qu'en avant-dernier, et on ne résilie Webador qu'en
-dernier.** Tant que les étapes 1 à 4 ne sont pas terminées, le site Webador
-reste en ligne et visible : personne ne voit la différence.
+**Transférer le domaine d'abord, résilier Webador ensuite — jamais l'inverse.**
+
+Tant que les étapes 1 à 6 ne sont pas terminées, le site Webador reste en
+ligne et visible : personne ne voit la différence. Résilier avant d'avoir
+transféré `solvex-automation.com` risque de libérer le domaine, même s'il est
+payé jusqu'en janvier 2027.
 
 ---
 
-## Étape 0 — Sauvegarder ce qui existe chez Webador
+## Étape 0 — Sauvegarder le contenu existant
 
-À faire **avant tout**, car Webador ne propose pas d'export du site.
+Webador ne propose pas d'export du site. À faire avant tout :
 
-- [ ] Télécharger toutes les **images** utilisées sur le site actuel
+- [ ] Télécharger toutes les **images** du site actuel
 - [ ] Copier tous les **textes** (accueil, à propos, services, mentions légales…)
-- [ ] Noter **la liste des URLs actuelles** — indispensable pour l'étape 5
-      (redirections). Astuce : chercher `site:TON-DOMAINE.fr` sur Google pour
-      voir toutes les pages indexées.
+- [ ] Noter **la liste des URLs actuelles** — indispensable pour l'étape 6.
+      Chercher `site:solvex-automation.com` sur Google pour voir les pages indexées.
 - [ ] Noter les **coordonnées affichées** (adresse, téléphone, horaires)
-- [ ] Faire une **capture d'écran de chaque page** — utile comme référence
-      visuelle et comme preuve de l'existant
+- [ ] Faire une **capture d'écran de chaque page**, comme référence visuelle
 
-### ⚠️ Le piège des e-mails
+### E-mail
 
-Si tu as des adresses en `@TON-DOMAINE.fr` gérées par Webador :
+La boîte `info@solvex-automation.com` est inactive et pratiquement vide, donc
+rien à sauvegarder. Mais l'adresse doit continuer de fonctionner si elle est
+communiquée quelque part.
 
-- [ ] **Sauvegarder les messages** existants (export depuis le webmail, ou
-      configuration en IMAP dans un client type Thunderbird pour tout rapatrier)
-- [ ] Choisir où seront hébergés les mails ensuite (Google Workspace,
-      Infomaniak, Zoho, OVH…) **avant** de changer quoi que ce soit
-- [ ] Noter les **enregistrements MX** actuels
-
-Changer les DNS sans avoir traité ce point coupe la réception des e-mails.
-C'est l'erreur la plus fréquente de ce type de migration.
+- [ ] Vérifier si `info@` est affichée sur le site, des documents, une fiche
+      Google Business, des cartes de visite
+- [ ] Choisir la solution de remplacement (voir le tableau à l'étape 5)
+- [ ] Noter les **enregistrements MX** actuels avant de toucher aux DNS
 
 ---
 
 ## Étape 1 — Mettre la landing page dans ce dépôt
 
-Les fichiers de la page vont dans le dossier `public/` :
+Les fichiers vont dans `public/` :
 
 ```
 public/
-├── index.html          ← ta landing page (remplace le fichier d'attente)
+├── index.html          ← la landing page (remplace le fichier d'attente)
 ├── 404.html            ← page d'erreur
 ├── robots.txt
 └── assets/             ← images, CSS, JS, polices
@@ -62,20 +103,19 @@ public/
 1. Aller sur https://github.com/damiennass1-bit/site-web
 2. Sélectionner la branche `claude/webador-migration-ysovxe`
 3. **Add file → Upload files**
-4. Glisser-déposer le contenu de ta landing page
-5. Vérifier que le fichier principal s'appelle bien `index.html` et qu'il est
-   dans `public/`
+4. Glisser-déposer le contenu de la landing page
+5. Vérifier que le fichier principal s'appelle bien `index.html`, dans `public/`
 6. **Commit changes**
 
 ### Méthode ligne de commande
 
-Depuis le dossier de ta landing page, sur ton ordinateur :
+Depuis le dossier de la landing page :
 
 ```bash
 git clone https://github.com/damiennass1-bit/site-web.git
 cd site-web
 git checkout claude/webador-migration-ysovxe
-# copier tes fichiers dans public/
+# copier les fichiers dans public/
 git add .
 git commit -m "Ajout de la landing page"
 git push -u origin claude/webador-migration-ysovxe
@@ -83,13 +123,14 @@ git push -u origin claude/webador-migration-ysovxe
 
 ### Points à vérifier dans le HTML
 
-- [ ] Les chemins des images sont **relatifs** (`assets/photo.jpg`) et non
-      absolus vers un disque local (`file:///C:/Users/...`)
-- [ ] Présence des balises `<title>` et `<meta name="description">`
-- [ ] Balise `<meta name="viewport" content="width=device-width, initial-scale=1">`
-      pour l'affichage mobile
-- [ ] Retirer `<meta name="robots" content="noindex">` s'il y en a une —
-      elle empêcherait Google d'indexer le site
+- [ ] Chemins d'images **relatifs** (`assets/photo.jpg`), pas absolus
+      (`file:///C:/Users/...`)
+- [ ] Balises `<title>` et `<meta name="description">` renseignées
+- [ ] `<meta name="viewport" content="width=device-width, initial-scale=1">`
+- [ ] Pas de `<meta name="robots" content="noindex">` résiduelle — elle
+      empêcherait l'indexation par Google
+- [ ] Casse des noms de fichiers cohérente : Netlify distingue `Photo.JPG` de
+      `photo.jpg`, contrairement à Windows
 
 ---
 
@@ -97,34 +138,56 @@ git push -u origin claude/webador-migration-ysovxe
 
 1. Créer un compte sur https://app.netlify.com (gratuit)
 2. **Add new site → Import an existing project → GitHub**
-3. Autoriser Netlify à accéder au dépôt `damiennass1-bit/site-web`
-4. Sélectionner la branche à déployer
-5. Netlify lit automatiquement `netlify.toml` : le dossier publié est `public/`,
-   il n'y a pas de commande de build
+3. Autoriser l'accès au dépôt `damiennass1-bit/site-web`
+4. Sélectionner la branche
+5. Netlify lit `netlify.toml` automatiquement : dossier publié `public/`,
+   pas de commande de build
 6. **Deploy**
 
-Le site est alors accessible sur une URL du type
-`https://nom-aleatoire.netlify.app`. Le domaine réel n'est **pas encore**
-concerné : Webador continue de tourner normalement.
+Le site est accessible sur une URL du type `https://nom-aleatoire.netlify.app`.
+`solvex-automation.com` n'est pas encore concerné : Webador continue de
+tourner normalement.
 
-Chaque `git push` sur cette branche redéploiera le site automatiquement.
+Chaque `git push` redéploiera le site automatiquement.
 
 ---
 
-## Étape 3 — Tout tester sur l'URL Netlify
+## Étape 3 — Demander le code EPP à Webador
 
-- [ ] Affichage sur **mobile** (le plus important : la majorité du trafic)
-- [ ] Affichage sur tablette et grand écran
+À lancer **le premier jour**, car c'est le maillon le plus lent.
+
+1. Dans le compte Webador, section **Nom de domaine → Gérer les noms de
+   domaine**
+2. Désactiver le **verrouillage du transfert** (*transfer lock*)
+3. Demander le **code d'autorisation** — aussi appelé code EPP ou code Auth.
+   Il est envoyé par e-mail, parfois sous 24 à 48 h.
+4. Vérifier que l'**e-mail du contact propriétaire** (WHOIS) est bien une
+   adresse accessible : la validation du transfert y sera envoyée. Si c'est
+   `info@solvex-automation.com`, qui est inactive, **la changer d'abord** pour
+   une adresse relevée — sinon l'e-mail de validation sera perdu et le
+   transfert échouera. C'est le point de vigilance principal de cette étape.
+
+Le domaine étant facturé à part (20 €/an), il ne s'agit pas d'un domaine
+« offert » lié au forfait, ce qui simplifie le transfert. À confirmer malgré
+tout auprès du support Webador : demander explicitement si la résiliation de
+l'abonnement Pro entraîne la perte du domaine.
+
+---
+
+## Étape 4 — Tout tester sur l'URL Netlify
+
+- [ ] Affichage **mobile** (majorité du trafic)
+- [ ] Affichage tablette et grand écran
 - [ ] Toutes les **images** se chargent
 - [ ] Tous les **liens** fonctionnent
-- [ ] Le **formulaire de contact** envoie bien un message (voir plus bas)
-- [ ] Les liens `tel:` et `mailto:` s'ouvrent correctement
-- [ ] Test de vitesse : https://pagespeed.web.dev
+- [ ] Le **formulaire de contact** envoie bien un message
+- [ ] Liens `tel:` et `mailto:` opérationnels
+- [ ] Test de performance : https://pagespeed.web.dev
 
 ### Formulaire de contact
 
-Un site statique ne peut pas envoyer d'e-mail tout seul. Netlify propose
-**Netlify Forms**, gratuit jusqu'à 100 envois par mois. Il suffit d'ajouter
+Un site statique ne peut pas envoyer d'e-mail seul. **Netlify Forms** est
+gratuit jusqu'à 100 envois par mois — il suffit d'ajouter
 `data-netlify="true"` à la balise `<form>` :
 
 ```html
@@ -137,93 +200,66 @@ Un site statique ne peut pas envoyer d'e-mail tout seul. Netlify propose
 </form>
 ```
 
-Les messages reçus apparaissent dans l'onglet **Forms** du tableau de bord
-Netlify, avec notification par e-mail à configurer.
+Les messages arrivent dans l'onglet **Forms** du tableau de bord Netlify, avec
+notification par e-mail à configurer.
 
 ---
 
-## Étape 4 — Récupérer le nom de domaine
+## Étape 5 — Transférer le domaine et le brancher sur Netlify
 
-Le domaine étant chez Webador, il y a deux options.
+### Transfert
 
-### Option A — Transférer le domaine chez un autre registrar ✅ recommandé
+Une fois le code EPP reçu, chez le nouveau registrar (OVH, Gandi, Infomaniak,
+Cloudflare…) : lancer la procédure de **transfert entrant**, saisir
+`solvex-automation.com` et le code, payer, puis valider l'e-mail de
+confirmation. Comptez environ 5 jours.
 
-Le domaine devient totalement indépendant de Webador. Coût : environ
-10-15 € par an, qui inclut généralement un an de renouvellement en plus.
+Bon à savoir : un transfert de `.com` ajoute **un an à la date d'expiration**.
+Le domaine expirant au 14 janvier 2027, il serait couvert jusqu'au
+14 janvier 2028.
 
-1. **Dans le compte Webador** : désactiver le verrouillage du domaine
-   (*transfer lock*) et demander le **code d'autorisation** — appelé code EPP,
-   code Auth, ou code de transfert AFNIC pour un `.fr`. Il arrive par e-mail,
-   parfois sous 24-48 h.
-2. Vérifier que l'**e-mail du contact propriétaire** (WHOIS) est une adresse
-   à laquelle tu as accès — la validation du transfert y sera envoyée.
-3. **Chez le nouveau registrar** (OVH, Gandi, Infomaniak, Cloudflare…) :
-   lancer la procédure de transfert entrant, saisir le domaine et le code
-   d'autorisation, payer.
-4. **Valider l'e-mail de confirmation** reçu.
-5. Attendre : comptez environ **5 jours** pour un `.com`, souvent moins pour
-   un `.fr`.
-
-Pendant toute la durée du transfert, le site Webador reste en ligne : les DNS
+Pendant toute la durée du transfert, le site Webador reste en ligne — les DNS
 ne changent pas tant qu'on ne les modifie pas.
 
-**Blocages possibles :**
-- Domaine acheté ou transféré il y a **moins de 60 jours** → transfert refusé
-  par les règles de l'ICANN, il faut attendre
-- Domaine expirant dans moins de 15 jours → le renouveler d'abord
-- Domaine offert dans le forfait Webador → vérifier les conditions, un
-  transfert anticipé peut être facturé
+### Branchement sur Netlify
 
-### Option B — Garder le domaine chez Webador, changer seulement les DNS
-
-Plus rapide (effet en quelques heures), mais tu restes dépendant de leur
-abonnement — et souvent le domaine est lié au forfait payant, donc résilier
-Webador te ferait perdre le domaine. **À vérifier dans leurs conditions avant
-de choisir cette option.**
-
-Dans les paramètres DNS du domaine chez Webador, remplacer les
-enregistrements existants par ceux fournis par Netlify (voir étape 5).
-
----
-
-## Étape 5 — Brancher le domaine sur Netlify
-
-Une fois le domaine transféré (option A) ou accessible en DNS (option B) :
-
-1. Dans Netlify : **Site settings → Domain management → Add a domain**
-2. Saisir le domaine, par exemple `TON-DOMAINE.fr`
-3. Netlify affiche les enregistrements DNS à créer chez le registrar :
+1. Netlify : **Site settings → Domain management → Add a domain**
+2. Saisir `solvex-automation.com`
+3. Créer chez le registrar les enregistrements DNS affichés par Netlify :
 
 | Type    | Nom   | Valeur                            |
 |---------|-------|-----------------------------------|
-| `A`     | `@`   | `75.2.60.5` *(valeur donnée par Netlify)* |
-| `CNAME` | `www` | `nom-du-site.netlify.app`         |
+| `A`     | `@`   | *(adresse IP fournie par Netlify)* |
+| `CNAME` | `www` | *(nom-du-site.netlify.app)*       |
 
-> ⚠️ Utiliser **les valeurs exactes affichées par Netlify**, pas celles
-> ci-dessus : elles servent uniquement d'exemple de format.
+> Utiliser **les valeurs exactes affichées par Netlify** — le tableau
+> ci-dessus ne montre que le format attendu.
 
-**Alternative plus simple** : déléguer le domaine aux serveurs DNS de Netlify
-en remplaçant les *nameservers* chez le registrar par ceux de Netlify. Netlify
-gère alors tous les enregistrements automatiquement. À éviter si tes e-mails
-sont ailleurs et que tu ne veux pas recréer les MX manuellement.
+4. Choisir le domaine principal, avec ou sans `www`. Netlify redirige
+   automatiquement l'autre vers celui-ci.
+5. Activer le **certificat HTTPS** (Let's Encrypt, gratuit, un clic une fois
+   les DNS propagés)
 
-4. **Conserver les enregistrements MX** si les e-mails sont gérés ailleurs —
-   ils sont indépendants du site web
-5. Choisir le domaine principal : avec ou sans `www` (peu importe, mais rester
-   cohérent). Netlify redirige automatiquement l'autre vers celui-ci.
-6. Activer le **certificat HTTPS** (Let's Encrypt, gratuit, en un clic dans
-   Netlify une fois les DNS propagés)
+Propagation DNS : de quelques minutes à 48 h. Suivi sur https://dnschecker.org
 
-La propagation DNS prend de quelques minutes à 48 h. Suivi possible sur
-https://dnschecker.org
+### Recréer l'adresse e-mail
+
+| Solution | Coût | Pour qui |
+|---|---|---|
+| **Redirection** `info@` → boîte Gmail perso | **0 €** — incluse chez la plupart des registrars | Le plus simple ici, vu que la boîte est inactive. Permet aussi d'*envoyer depuis* `info@` via le « Send as » de Gmail. |
+| **Zoho Mail** | 0 € pour 1 utilisateur, 5 Go | Vraie boîte dédiée, gratuite |
+| **Infomaniak** | ~1,50 €/mois | Hébergement en Suisse, interface en français |
+| **Google Workspace** | ~6 €/mois | Si Drive, Agenda et Meet pro sont nécessaires |
+
+Ajouter ensuite les **enregistrements MX** de la solution choisie dans les DNS.
+Ils sont indépendants des enregistrements `A` et `CNAME` du site web.
 
 ---
 
 ## Étape 6 — Préserver le référencement Google
 
-Si le site Webador avait plusieurs pages indexées, il faut rediriger les
-anciennes URLs vers les nouvelles. Sinon : erreurs 404 et perte de position
-dans les résultats de recherche.
+Si le site Webador avait plusieurs pages indexées, rediriger les anciennes
+URLs évite les erreurs 404 et la perte de position dans les résultats.
 
 Créer un fichier `public/_redirects` :
 
@@ -234,45 +270,49 @@ Créer un fichier `public/_redirects` :
 /contact          /#contact       301
 ```
 
-Le code `301` signifie « déplacé définitivement » : c'est celui qui transmet
-le référencement à la nouvelle adresse.
+Le code `301` (« déplacé définitivement ») transmet le référencement à la
+nouvelle adresse.
 
 Ensuite :
 
-- [ ] Créer un compte **Google Search Console** et y ajouter le domaine
-- [ ] Soumettre le sitemap (ou au minimum l'URL d'accueil) pour accélérer
-      la réindexation
-- [ ] Vérifier après quelques jours qu'aucune erreur 404 n'est remontée
-- [ ] Mettre à jour la **fiche Google Business** si tu en as une
+- [ ] Ajouter `solvex-automation.com` à **Google Search Console**
+- [ ] Soumettre le sitemap, ou au minimum l'URL d'accueil
+- [ ] Vérifier après quelques jours qu'aucune erreur 404 n'est signalée
+- [ ] Mettre à jour la **fiche Google Business** le cas échéant
 
 ---
 
 ## Étape 7 — Résilier Webador
 
-**Seulement une fois que :**
+**Uniquement une fois que :**
 
-- [ ] Le nouveau site tourne sur le vrai domaine depuis **au moins une semaine**
-- [ ] Le HTTPS est actif (cadenas visible dans le navigateur)
-- [ ] Les e-mails fonctionnent — envoi **et** réception testés
-- [ ] Le domaine est bien transféré (option A) ou tu as confirmé qu'il ne sera
-      pas perdu (option B)
+- [ ] `solvex-automation.com` est bien transféré chez le nouveau registrar
+      (le confirmer dans l'interface du registrar, pas seulement par e-mail)
+- [ ] Le site tourne sur le vrai domaine depuis **plusieurs jours**
+- [ ] Le HTTPS est actif — cadenas visible dans le navigateur
+- [ ] L'adresse `info@` fonctionne : envoi **et** réception testés
 - [ ] Tout le contenu a été récupéré (étape 0)
 
-Attention à la **date de renouvellement** de l'abonnement Webador : résilier
-juste après un prélèvement annuel revient à payer une année inutilisée.
-Beaucoup de formules exigent un préavis avant l'échéance.
+Viser une résiliation **avant le 14 septembre 2026** pour ne pas déclencher
+un mois supplémentaire. Vérifier le préavis exigé dans les conditions
+générales : certaines formules imposent quelques jours avant l'échéance.
 
 ---
 
-## Récapitulatif des coûts
+## Coûts
 
-| Poste                        | Webador           | Nouvelle solution           |
-|------------------------------|-------------------|-----------------------------|
-| Hébergement                  | inclus (abonnement) | Netlify : **0 €**         |
-| Nom de domaine               | inclus            | ~10-15 €/an (registrar)     |
-| Certificat HTTPS             | inclus            | **0 €** (Let's Encrypt)     |
-| Formulaire de contact        | inclus            | **0 €** (100 envois/mois)   |
-| E-mails pro `@domaine`       | selon formule     | 0 à 6 €/mois selon l'offre  |
+| Poste | Aujourd'hui (Webador) | Après migration |
+|---|---|---|
+| Hébergement + site | 12,00 €/mois → **144 €/an** | Netlify : **0 €** |
+| Nom de domaine `.com` | **20 €/an** | ~10-13 €/an selon le registrar |
+| Certificat HTTPS | inclus | **0 €** (Let's Encrypt) |
+| Formulaire de contact | inclus | **0 €** (100 envois/mois) |
+| E-mail `info@` | inclus | 0 € en redirection, ou 0-6 €/mois |
+| **Total** | **164 €/an** | **~12 €/an** |
+
+Soit environ **150 € économisés par an**, en contrepartie de la maintenance
+du site — qui, pour une landing page statique, se limite à modifier du HTML et
+à faire un `push`.
 
 ---
 
@@ -281,7 +321,8 @@ Beaucoup de formules exigent un préavis avant l'échéance.
 | Symptôme | Cause probable |
 |---|---|
 | Le site affiche encore l'ancienne version | Cache DNS ou navigateur — tester en navigation privée, vérifier sur dnschecker.org |
-| « Site non sécurisé » | Certificat pas encore émis — attendre la propagation DNS complète, puis relancer *Verify DNS configuration* dans Netlify |
-| Les e-mails ne partent plus | Enregistrements MX écrasés — les recréer à l'identique |
-| Images manquantes | Chemins absolus ou casse des noms de fichiers (`Photo.JPG` ≠ `photo.jpg` — Netlify est sensible à la casse, pas Windows) |
-| Transfert de domaine refusé | Domaine verrouillé, acheté il y a moins de 60 jours, ou code EPP expiré |
+| « Site non sécurisé » | Certificat pas encore émis — attendre la propagation complète, puis relancer *Verify DNS configuration* dans Netlify |
+| L'e-mail de validation du transfert n'arrive pas | Il part vers le contact WHOIS. S'il pointe vers `info@` (inactive), corriger le contact chez Webador et redemander |
+| Les e-mails ne partent plus | Enregistrements MX écrasés — les recréer |
+| Images manquantes | Chemins absolus, ou casse des noms de fichiers |
+| Transfert refusé | Domaine encore verrouillé, ou code EPP expiré (valable quelques jours seulement) |
