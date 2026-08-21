@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 
-# À décommenter une fois un sitemap généré :
-# Sitemap: https://solvex-automation.com/sitemap.xml
+# La page de confirmation d'envoi n'a pas vocation à être indexée.
+Disallow: /merci.html
+
+Sitemap: https://www.solvex-automation.com/sitemap.xml

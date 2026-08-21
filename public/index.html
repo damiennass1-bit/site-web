@@ -1,35 +1,575 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Solvex Automation — site en préparation</title>
-<meta name="description" content="Nouveau site en cours de mise en ligne.">
-<meta name="robots" content="noindex">
+<title>Solvex Automation : digitalisation sur mesure pour les PME</title>
+<meta name="description" content="Solvex Automation accompagne les PME : logiciels sur mesure, automatisation et intelligence artificielle. Audit gratuit, sans engagement.">
+<link rel="icon" href="assets/logo-solvex.png">
+<link rel="apple-touch-icon" href="assets/logo-solvex.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Solvex Automation : digitalisation sur mesure pour les PME">
+<meta property="og:description" content="Recentrez-vous sur votre métier. Solvex prend en charge le reste. Audit gratuit, sans engagement.">
+<meta property="og:image" content="https://www.solvex-automation.com/assets/logo-solvex.png">
+<meta name="twitter:card" content="summary_large_image">
 <style>
-  :root { color-scheme: light dark; }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    padding: 2rem;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    background: #0f1115;
-    color: #e8eaed;
-  }
-  main { max-width: 34rem; text-align: center; }
-  h1 { font-size: clamp(1.6rem, 5vw, 2.4rem); margin: 0 0 .75rem; letter-spacing: -0.02em; }
-  p { margin: 0; line-height: 1.6; color: #a8adb7; }
-  code { background: #1c1f26; padding: .15em .4em; border-radius: 4px; font-size: .9em; }
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:#050604;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{color:#9BA09B;text-decoration:none;}
+a:hover{color:#fff;}
+@keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+@keyframes pulseGlow{0%,100%{opacity:.5;}50%{opacity:1;}}
+@keyframes scrollHint{0%{transform:translateY(0);opacity:0;}30%{opacity:1;}100%{transform:translateY(14px);opacity:0;}}
+::selection{background:rgba(255,255,255,.9);color:#050604;}
+input,textarea,select,button{font-family:inherit;}
+[data-navlinks] a,[data-brandname]{white-space:nowrap;}
+@media(max-width:1180px){
+  [data-brandname]{font-size:14px !important;letter-spacing:3px !important;}
+  [data-navlinks]{gap:22px !important;}
+}
+@media(max-width:1040px){
+  [data-navlinks]{display:none !important;}
+  [data-burger]{display:flex !important;}
+  [data-brandname]{font-size:13px !important;letter-spacing:3px !important;}
+  [data-brandname] [data-brandlong]{display:none;}
+}
+@media(min-width:1041px){ [data-mobilemenu]{display:none !important;} }
+
+/* La barre de navigation est collante : sans cette marge, un lien d'ancre
+   (y compris les redirections 301 de _redirects) masque le titre derrière. */
+section[id],header[id]{scroll-margin-top:84px;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+@media (prefers-reduced-motion: reduce){
+*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+transition-duration:.01ms!important;scroll-behavior:auto!important;}}
+.i1:hover{color:#fff;}
+.i2:hover{color:#fff;}
+.i3:hover{color:#fff;}
+.i4:hover{color:#fff;}
+.i5:hover{color:#fff;}
+.i6:hover{opacity:.85;color:#050604;transform:scale(1.03);}
+.i7:hover{transform:scale(1.04);opacity:.9;color:#050604;}
+.i8:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.04);color:#fff;}
+.i9:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);}
+.i10:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);}
+.i11:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);}
+.i12:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);}
+.i13:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);}
+.i14:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);}
+.i15:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);}
+.i16:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);}
+.i17:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);}
+.i18:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);}
+.i19:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);}
+.i20:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);}
+.i21:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);}
+.i22:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.32);}
+.i23:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);}
+.i24:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);}
+.i25:hover{transform:scale(1.03);opacity:.9;color:#fff;}
+.i26:focus{border-color:#050604;background:#fff;}
+.i27:focus{border-color:#050604;background:#fff;}
+.i28:focus{border-color:#050604;background:#fff;}
+.i29:focus{border-color:#050604;background:#fff;}
+.i30:hover{transform:scale(1.02);opacity:.9;}
 </style>
+<link rel="canonical" href="https://www.solvex-automation.com/">
+<meta name="theme-color" content="#050604">
+<meta property="og:url" content="https://www.solvex-automation.com/">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Solvex Automation">
+
 </head>
 <body>
-<main>
-  <h1>Solvex Automation</h1>
-  <p>Cette page est un espace réservé. Remplace <code>public/index.html</code>
-     par ta vraie landing page pour la mettre en ligne.</p>
-</main>
+<nav data-nav="" style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(5,6,4,0);border-bottom:1px solid rgba(255,255,255,0);transition:background .5s,border-color .5s,backdrop-filter .5s;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between;">
+    <a href="#top" style="display:flex;align-items:center;gap:12px;">
+      <img src="assets/logo-solvex.png" alt="Solvex" style="height:42px;width:auto;display:block;">
+      <span data-brandname="" style="font-size:18px;letter-spacing:5px;font-weight:600;color:#fff;">SOLVEX<span data-brandlong=""> AUTOMATION</span></span>
+    </a>
+    <div data-navlinks="" style="display:flex;align-items:center;gap:32px;">
+      <a class="i1" href="#methode" style="font-size:14px;color:#9BA09B;transition:color .2s;">La méthode</a>
+      <a class="i2" href="#projets" style="font-size:14px;color:#9BA09B;transition:color .2s;">Solutions</a>
+      <a class="i3" href="#realisations" style="font-size:14px;color:#9BA09B;transition:color .2s;">Réalisations</a>
+      <a class="i4" href="#pour-qui" style="font-size:14px;color:#9BA09B;transition:color .2s;">Pour qui</a>
+      <a class="i5" href="#faq" style="font-size:14px;color:#9BA09B;transition:color .2s;">Questions</a>
+      <a class="i6" href="#contact" style="background:#fff;color:#050604;padding:9px 20px;border-radius:980px;font-size:13.5px;font-weight:600;white-space:nowrap;transition:opacity .2s,transform .2s;">Parlons-en</a>
+    </div>
+    <button data-burger="" aria-label="Menu" style="display:none;align-items:center;justify-content:center;flex-direction:column;gap:5px;width:44px;height:44px;background:none;border:0;cursor:pointer;padding:0;">
+      <span data-bar="" style="display:block;width:22px;height:1.5px;background:#fff;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .3s;"></span>
+      <span data-bar="" style="display:block;width:22px;height:1.5px;background:#fff;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .3s;"></span>
+    </button>
+  </div>
+  <div data-mobilemenu="" style="max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.16,1,.3,1);background:rgba(5,6,4,.97);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.08);">
+    <div style="display:flex;flex-direction:column;gap:4px;padding:16px 28px 30px;">
+      <a data-mlink="" href="#methode" style="font-size:20px;color:#fff;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);">La méthode</a>
+      <a data-mlink="" href="#projets" style="font-size:20px;color:#fff;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);">Solutions</a>
+      <a data-mlink="" href="#realisations" style="font-size:20px;color:#fff;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);">Réalisations</a>
+      <a data-mlink="" href="#pour-qui" style="font-size:20px;color:#fff;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);">Pour qui</a>
+      <a data-mlink="" href="#faq" style="font-size:20px;color:#fff;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);">Questions</a>
+      <a data-mlink="" href="#contact" style="margin-top:18px;background:#fff;color:#050604;padding:15px 24px;border-radius:980px;font-size:16px;font-weight:600;text-align:center;">Parlons-en</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top" style="position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:110px 28px 80px;">
+  <div data-parallax="" style="position:absolute;top:-22%;left:50%;transform:translateX(-50%);width:1100px;height:1100px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.07) 0%,transparent 60%);pointer-events:none;animation:pulseGlow 7s ease-in-out infinite;"></div>
+  <div data-hero-inner="" style="position:relative;max-width:900px;margin:0 auto;">
+    <div data-reveal="" style="animation:floaty 6s ease-in-out infinite;margin-bottom:38px;">
+      <img data-logo3d="" src="assets/logo-solvex.png" alt="" style="width:200px;height:auto;filter:drop-shadow(0 14px 54px rgba(255,255,255,.16));transition:filter .4s;cursor:pointer;">
+    </div>
+    <h1 style="font-size:clamp(34px,4.9vw,64px);line-height:1.08;font-weight:700;letter-spacing:-0.03em;margin:0 0 26px;">
+      <span data-reveal="" data-delay="1" style="display:block;">Recentrez-vous sur votre métier.</span>
+      <span data-reveal="" data-delay="2" style="display:block;background:linear-gradient(100deg,#fff 20%,#8a8f8a 80%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;">Solvex prend en charge le reste.</span>
+    </h1>
+    <p data-reveal="" data-delay="3" style="font-size:clamp(16px,1.7vw,19px);color:#9BA09B;max-width:56ch;margin:0 auto 44px;line-height:1.55;text-wrap:pretty;">Tout ce qui vous éloigne du terrain, Solvex le prend en charge, pour que vous passiez votre temps là où il compte vraiment.</p>
+    <div data-reveal="" data-delay="4" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a class="i7" href="#contact" style="background:#fff;color:#050604;padding:15px 32px;border-radius:980px;font-size:16px;white-space:nowrap;font-weight:600;transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .2s;">Demander un audit gratuit</a>
+      <a class="i8" href="#methode" style="border:1px solid rgba(255,255,255,.22);color:#fff;padding:15px 32px;border-radius:980px;font-size:16px;white-space:nowrap;font-weight:500;transition:border-color .3s,background .3s;">Comment ça marche</a>
+    </div>
+    <p data-reveal="" data-delay="5" style="margin:26px 0 0;font-size:13.5px;color:#6E736E;">30 à 45 minutes. Sans engagement. Sans jargon.</p>
+  </div>
+  <div style="position:absolute;bottom:34px;left:50%;transform:translateX(-50%);width:1px;height:44px;overflow:hidden;">
+    <div style="width:1px;height:20px;background:linear-gradient(#fff,transparent);animation:scrollHint 2.2s ease-in-out infinite;"></div>
+  </div>
+</header>
+
+<section id="probleme" style="padding:150px 28px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div data-reveal="" style="font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#6E736E;margin-bottom:18px;">Le constat</div>
+    <h2 data-reveal="" data-delay="1" style="font-size:clamp(28px,3.7vw,46px);line-height:1.12;font-weight:700;letter-spacing:-0.025em;max-width:22ch;margin:0 0 20px;">Chaque jour, du temps et de l'argent partent en fumée.</h2>
+    <p data-reveal="" data-delay="2" style="color:#9BA09B;font-size:18px;max-width:58ch;margin:0 0 64px;line-height:1.6;text-wrap:pretty;">Ce ne sont pas des grands problèmes. Ce sont des petites choses qui se répètent, tous les jours, et qui finissent par coûter cher.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:18px;">
+      <div class="i9" data-card="" data-reveal="" style="position:relative;overflow:hidden;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:38px 34px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s;">
+        <div data-glow="" style="position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;"></div>
+        <h3 style="font-size:20px;font-weight:650;margin:0 0 10px;letter-spacing:-0.01em;position:relative;">Trop de temps passé à trouver des clients</h3>
+        <p style="color:#9BA09B;font-size:15.5px;margin:0 0 22px;line-height:1.6;position:relative;">Démarcher, relancer, espérer. Pendant ce temps, le travail attend.</p>
+        <p style="position:relative;margin:0;padding-top:18px;border-top:1px solid rgba(255,255,255,.09);font-size:14.5px;color:#D8DCD8;line-height:1.55;">Lead Finder : les bons contacts arrivent chez vous, déjà triés.</p>
+      </div>
+      <div class="i10" data-card="" data-reveal="" data-delay="2" style="position:relative;overflow:hidden;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:38px 34px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s;">
+        <div data-glow="" style="position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;"></div>
+        <h3 style="font-size:20px;font-weight:650;margin:0 0 10px;letter-spacing:-0.01em;position:relative;">Des demandes qui se perdent en route</h3>
+        <p style="color:#9BA09B;font-size:15.5px;margin:0 0 22px;line-height:1.6;position:relative;">Un appel manqué, un formulaire sans suite, un devis oublié. L'affaire part ailleurs.</p>
+        <p style="position:relative;margin:0;padding-top:18px;border-top:1px solid rgba(255,255,255,.09);font-size:14.5px;color:#D8DCD8;line-height:1.55;">Agent vocal IA et relance automatique des devis.</p>
+      </div>
+      <div class="i11" data-card="" data-reveal="" data-delay="1" style="position:relative;overflow:hidden;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:38px 34px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s;">
+        <div data-glow="" style="position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;"></div>
+        <h3 style="font-size:20px;font-weight:650;margin:0 0 10px;letter-spacing:-0.01em;position:relative;">Des heures perdues sur l'administratif</h3>
+        <p style="color:#9BA09B;font-size:15.5px;margin:0 0 22px;line-height:1.6;position:relative;">Factures, ressaisie, suivi. Du temps qui ne rapporte rien et qu'on ne récupère jamais.</p>
+        <p style="position:relative;margin:0;padding-top:18px;border-top:1px solid rgba(255,255,255,.09);font-size:14.5px;color:#D8DCD8;line-height:1.55;">Facturation et suivi automatisés, sans double saisie.</p>
+      </div>
+      <div class="i12" data-card="" data-reveal="" data-delay="2" style="position:relative;overflow:hidden;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:38px 34px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s;">
+        <div data-glow="" style="position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;"></div>
+        <h3 style="font-size:20px;font-weight:650;margin:0 0 10px;letter-spacing:-0.01em;position:relative;">Des outils qui ne se parlent pas</h3>
+        <p style="color:#9BA09B;font-size:15.5px;margin:0 0 22px;line-height:1.6;position:relative;">Un tableur, un logiciel, un carnet. Solvex fait le lien entre vos différents outils.</p>
+        <p style="position:relative;margin:0;padding-top:18px;border-top:1px solid rgba(255,255,255,.09);font-size:14.5px;color:#D8DCD8;line-height:1.55;">Un tableau de bord unique, à jour en temps réel.</p>
+      </div>
+    </div>
+    </div>
+  
+</section>
+
+<section id="methode" style="padding:150px 28px;background:linear-gradient(#050604,#0A0C0A 30%,#0A0C0A 70%,#050604);">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div data-reveal="" style="font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#6E736E;margin-bottom:18px;">Notre méthode</div>
+    <h2 data-reveal="" data-delay="1" style="font-size:clamp(28px,3.7vw,46px);line-height:1.12;font-weight:700;letter-spacing:-0.025em;max-width:22ch;margin:0 0 20px;">Écoute. Analyse. Co-construction.</h2>
+    <p data-reveal="" data-delay="2" style="color:#9BA09B;font-size:18px;max-width:58ch;margin:0 0 72px;">Trois étapes, dans cet ordre. Jamais l'inverse.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:48px;">
+      <div data-reveal="" style="border-top:1px solid rgba(255,255,255,.14);padding-top:28px;">
+        <div style="font-size:72px;font-weight:700;letter-spacing:-0.04em;color:rgba(255,255,255,.14);line-height:1;margin-bottom:20px;">01</div>
+        <h3 style="font-size:22px;font-weight:650;margin:0 0 10px;">Écoute : échangeons sur vos problèmes</h3>
+        <p style="color:#9BA09B;font-size:15.5px;margin:0;line-height:1.65;">Vous nous parlez de votre quotidien. État des lieux de votre écosystème organisationnel et des tâches chronophages.</p>
+      </div>
+      <div data-reveal="" data-delay="2" style="border-top:1px solid rgba(255,255,255,.14);padding-top:28px;">
+        <div style="font-size:72px;font-weight:700;letter-spacing:-0.04em;color:rgba(255,255,255,.14);line-height:1;margin-bottom:20px;">02</div>
+        <h3 style="font-size:22px;font-weight:650;margin:0 0 10px;">Analyse : analysons ensemble les problématiques</h3>
+        <p style="color:#9BA09B;font-size:15.5px;margin:0;line-height:1.65;">Recherche de gains de temps et de fluidité dans votre quotidien, là où ils se trouvent vraiment.</p>
+      </div>
+      <div data-reveal="" data-delay="4" style="border-top:1px solid rgba(255,255,255,.14);padding-top:28px;">
+        <div style="font-size:72px;font-weight:700;letter-spacing:-0.04em;color:rgba(255,255,255,.14);line-height:1;margin-bottom:20px;">03</div>
+        <h3 style="font-size:22px;font-weight:650;margin:0 0 10px;">Co-construction : construisons ensemble les outils</h3>
+        <p style="color:#9BA09B;font-size:15.5px;margin:0;line-height:1.65;">Vous validez à chaque étape. Rien n'est décidé sans vous, rien n'est livré sans être testé.</p>
+      </div>
+    </div>
+    <div data-founder="" data-reveal="" style="margin-top:96px;display:flex;flex-direction:column;gap:40px;background:#000;border:1px solid rgba(255,255,255,.09);border-radius:26px;padding:clamp(28px,4vw,52px);">
+      <div style="aspect-ratio:1.79/1;background:#000;border-radius:18px;overflow:hidden;image-rendering:-webkit-optimize-contrast;">
+        <img src="assets/damien-nass.webp" alt="Damien Nass, fondateur de Solvex Automation" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block;border-radius:18px;">
+      </div>
+      <div style="max-width:70ch;">
+        <div style="font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#6E736E;margin-bottom:16px;">Le fondateur</div>
+        <h3 style="font-size:clamp(24px,2.6vw,32px);font-weight:700;letter-spacing:-0.02em;margin:0 0 6px;">Damien Nass</h3>
+        <p style="font-size:15.5px;color:#D8DCD8;margin:0 0 26px;">Fondateur de Solvex Automation</p>
+        <p style="color:#9BA09B;font-size:16.5px;line-height:1.7;margin:0 0 18px;text-wrap:pretty;">À l'heure de l'intelligence artificielle et des nouvelles technologies, j'ai constaté qu'un grand nombre de PME ne les adoptaient pas et passaient à côté d'un manque à gagner énorme.</p>
+        <p style="color:#9BA09B;font-size:16.5px;line-height:1.7;margin:0;text-wrap:pretty;">C'est pourquoi j'ai créé Solvex Automation. Avec Hugo et Rafik, développeurs, nous mettons en place des solutions de digitalisation sur mesure, pensées pour votre métier et votre organisation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projets" style="padding:150px 28px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div data-reveal="" style="font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#6E736E;margin-bottom:18px;">Ce que Solvex construit</div>
+    <h2 data-reveal="" data-delay="1" style="font-size:clamp(28px,3.7vw,46px);line-height:1.12;font-weight:700;letter-spacing:-0.025em;max-width:22ch;margin:0 0 20px;">Chaque entreprise est différente. Chaque solution aussi.</h2>
+    <p data-reveal="" data-delay="2" style="color:#9BA09B;font-size:18px;max-width:58ch;margin:0 0 64px;line-height:1.6;text-wrap:pretty;">Voici le genre de choses que Solvex met en place. Rien n'est standard : tout part de ce qui existe chez vous.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;">
+      <div class="i13" data-card="" data-reveal="" style="position:relative;overflow:hidden;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:36px 32px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s;">
+        <div data-glow="" style="position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;"></div>
+        <h3 style="font-size:19px;font-weight:650;margin:0 0 10px;">Ne plus rater un appel</h3>
+        <p style="color:#9BA09B;font-size:15px;margin:0;line-height:1.6;">Un standard qui répond à votre place, à toute heure, et prend les rendez-vous.</p>
+      </div>
+      <div class="i14" data-card="" data-reveal="" data-delay="1" style="position:relative;overflow:hidden;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:36px 32px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s;">
+        <div data-glow="" style="position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;"></div>
+        <h3 style="font-size:19px;font-weight:650;margin:0 0 10px;">Trouver des clients sans les chercher</h3>
+        <p style="color:#9BA09B;font-size:15px;margin:0;line-height:1.6;">Les bons contacts arrivent chez vous, déjà triés, avec l'essentiel pour les appeler.</p>
+      </div>
+      <div class="i15" data-card="" data-reveal="" data-delay="2" style="position:relative;overflow:hidden;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:36px 32px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s;">
+        <div data-glow="" style="position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;"></div>
+        <h3 style="font-size:19px;font-weight:650;margin:0 0 10px;">Ne plus laisser filer un devis</h3>
+        <p style="color:#9BA09B;font-size:15px;margin:0;line-height:1.6;">Chaque proposition est suivie et relancée au bon moment, sans que vous y pensiez.</p>
+      </div>
+      <div class="i16" data-card="" data-reveal="" style="position:relative;overflow:hidden;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:36px 32px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s;">
+        <div data-glow="" style="position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;"></div>
+        <h3 style="font-size:19px;font-weight:650;margin:0 0 10px;">Où sont les gains et améliorations possibles</h3>
+        <p style="color:#9BA09B;font-size:15px;margin:0;line-height:1.6;">Vos chiffres à jour, lisibles d'un coup d'œil, sans tableur à remplir le dimanche.</p>
+      </div>
+      <div class="i17" data-card="" data-reveal="" data-delay="1" style="position:relative;overflow:hidden;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:36px 32px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s;">
+        <div data-glow="" style="position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;"></div>
+        <h3 style="font-size:19px;font-weight:650;margin:0 0 10px;">En finir avec la paperasse</h3>
+        <p style="color:#9BA09B;font-size:15px;margin:0;line-height:1.6;">Les factures se rangent, se trient et partent au comptable toutes seules.</p>
+      </div>
+      <div class="i18" data-card="" data-reveal="" data-delay="2" style="position:relative;overflow:hidden;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:36px 32px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s;">
+        <div data-glow="" style="position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;"></div>
+        <h3 style="font-size:19px;font-weight:650;margin:0 0 10px;">Tout au même endroit</h3>
+        <p style="color:#9BA09B;font-size:15px;margin:0;line-height:1.6;">Vos informations réunies, accessibles depuis le bureau comme depuis le chantier.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="realisations" style="padding:0 28px 150px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div data-reveal="" style="font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#6E736E;margin-bottom:18px;">Déjà construit</div>
+    <h2 data-reveal="" data-delay="1" style="font-size:clamp(28px,3.7vw,46px);line-height:1.12;font-weight:700;letter-spacing:-0.025em;max-width:22ch;margin:0 0 20px;">Des outils qui tournent déjà.</h2>
+    <p data-reveal="" data-delay="2" style="color:#9BA09B;font-size:18px;max-width:58ch;margin:0 0 56px;line-height:1.6;text-wrap:pretty;">Voici ce que Solvex a construit et met en service chez ses clients.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;">
+      <div class="i19" data-card="" data-reveal="" style="position:relative;overflow:hidden;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:24px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s;">
+        <div style="aspect-ratio:1.92/1;background:#0A0C0A;border-bottom:1px solid rgba(255,255,255,.08);">
+          <img src="assets/capture-lead-finder.webp" alt="Capture d&#x27;écran de Lead Finder, outil de prospection" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div style="position:relative;padding:28px 30px 32px;">
+          <div data-glow="" style="position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;"></div>
+          <h3 style="font-size:19px;font-weight:650;margin:0 0 9px;letter-spacing:-0.01em;position:relative;">Lead Finder</h3>
+          <p style="color:#9BA09B;font-size:15px;margin:0;line-height:1.6;position:relative;">Les contacts qualifiés remontent automatiquement, prêts à être appelés.</p>
+        </div>
+      </div>
+      <div class="i20" data-card="" data-reveal="" data-delay="1" style="position:relative;overflow:hidden;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:24px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s;">
+        <div style="aspect-ratio:1.858/1;background:#0A0C0A;border-bottom:1px solid rgba(255,255,255,.08);">
+          <img src="assets/capture-gestion-btp.webp" alt="Capture d&#x27;écran de l&#x27;outil de gestion pour le BTP" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div style="position:relative;padding:28px 30px 32px;">
+          <div data-glow="" style="position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;"></div>
+          <h3 style="font-size:19px;font-weight:650;margin:0 0 9px;letter-spacing:-0.01em;position:relative;">Outil de gestion BTP</h3>
+          <p style="color:#9BA09B;font-size:15px;margin:0;line-height:1.6;position:relative;">Chantiers, devis et rentabilité suivis au même endroit.</p>
+        </div>
+      </div>
+      <div class="i21" data-card="" data-reveal="" data-delay="2" style="position:relative;overflow:hidden;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:24px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s;">
+        <div style="aspect-ratio:1.759/1;background:#0A0C0A;border-bottom:1px solid rgba(255,255,255,.08);">
+          <img src="assets/capture-app-terrain.webp" alt="Capture d&#x27;écran de l&#x27;application de suivi terrain" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div style="position:relative;padding:28px 30px 32px;">
+          <div data-glow="" style="position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;"></div>
+          <h3 style="font-size:19px;font-weight:650;margin:0 0 9px;letter-spacing:-0.01em;position:relative;">Application terrain</h3>
+          <p style="color:#9BA09B;font-size:15px;margin:0;line-height:1.6;position:relative;">Tournées, prospects et relances suivis depuis le téléphone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pour-qui" style="padding:150px 28px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div data-reveal="" style="font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#6E736E;margin-bottom:18px;">Pour qui</div>
+    <h2 data-reveal="" data-delay="1" style="font-size:clamp(28px,3.7vw,46px);line-height:1.12;font-weight:700;letter-spacing:-0.025em;max-width:22ch;margin:0 0 20px;">Les entreprises qui font, pas celles qui parlent.</h2>
+    <p data-reveal="" data-delay="2" style="color:#9BA09B;font-size:18px;max-width:58ch;margin:0 0 64px;line-height:1.6;text-wrap:pretty;">Solvex travaille avec des dirigeants de PME qui connaissent leur métier et qui veulent arrêter de perdre du temps sur le reste.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">
+      <div class="i22" data-card="" data-reveal="" style="position:relative;overflow:hidden;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.18);border-radius:22px;padding:40px 34px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s;">
+        <div data-glow="" style="position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;"></div>
+        <h3 style="font-size:21px;font-weight:650;margin:0 0 10px;">Immobilier</h3>
+        <p style="color:#9BA09B;font-size:15px;margin:0;line-height:1.6;">Trouver des vendeurs sérieux, suivre chaque contact, alléger la gestion quotidienne.</p>
+      </div>
+      <div class="i23" data-card="" data-reveal="" data-delay="1" style="position:relative;overflow:hidden;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:40px 34px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s;">
+        <div data-glow="" style="position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;"></div>
+        <h3 style="font-size:21px;font-weight:650;margin:0 0 10px;">Bâtiment &amp; travaux</h3>
+        <p style="color:#9BA09B;font-size:15px;margin:0;line-height:1.6;">Suivre la rentabilité de vos chantiers, automatiser les factures, arrêter la double saisie.</p>
+      </div>
+      <div class="i24" data-card="" data-reveal="" data-delay="2" style="position:relative;overflow:hidden;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:40px 34px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s;">
+        <div data-glow="" style="position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;"></div>
+        <h3 style="font-size:21px;font-weight:650;margin:0 0 10px;">Artisans &amp; commerces</h3>
+        <p style="color:#9BA09B;font-size:15px;margin:0;line-height:1.6;">Ne plus rater un appel, ne plus perdre un client parce que vous étiez occupé.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="engagements" style="padding:0 28px 150px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div data-reveal="" style="font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#6E736E;margin-bottom:18px;">Nos engagements</div>
+    <h2 data-reveal="" data-delay="1" style="font-size:clamp(28px,3.7vw,46px);line-height:1.12;font-weight:700;letter-spacing:-0.025em;max-width:22ch;margin:0 0 56px;">Ce sur quoi vous pouvez compter.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px 48px;">
+      <div data-reveal="" style="border-top:1px solid rgba(255,255,255,.14);padding-top:24px;">
+        <h3 style="font-size:18px;font-weight:650;margin:0 0 10px;letter-spacing:-0.01em;">Audit gratuit, sans engagement</h3>
+        <p style="color:#9BA09B;font-size:15.5px;margin:0;line-height:1.65;text-wrap:pretty;">30 à 45 minutes pour comprendre votre organisation. Si Solvex n'a rien à vous apporter, on vous le dit.</p>
+      </div>
+      <div data-reveal="" data-delay="1" style="border-top:1px solid rgba(255,255,255,.14);padding-top:24px;">
+        <h3 style="font-size:18px;font-weight:650;margin:0 0 10px;letter-spacing:-0.01em;">Un devis avant tout démarrage</h3>
+        <p style="color:#9BA09B;font-size:15.5px;margin:0;line-height:1.65;text-wrap:pretty;">Le périmètre et le prix sont écrits et validés avant la première ligne de code.</p>
+      </div>
+      <div data-reveal="" data-delay="2" style="border-top:1px solid rgba(255,255,255,.14);padding-top:24px;">
+        <h3 style="font-size:18px;font-weight:650;margin:0 0 10px;letter-spacing:-0.01em;">Vous validez à chaque étape</h3>
+        <p style="color:#9BA09B;font-size:15.5px;margin:0;line-height:1.65;text-wrap:pretty;">Livraison par étapes, testée avec vous. Rien n'est déployé sans votre accord.</p>
+      </div>
+      <div data-reveal="" data-delay="0" style="border-top:1px solid rgba(255,255,255,.14);padding-top:24px;">
+        <h3 style="font-size:18px;font-weight:650;margin:0 0 10px;letter-spacing:-0.01em;">Vos outils restent les vôtres</h3>
+        <p style="color:#9BA09B;font-size:15.5px;margin:0;line-height:1.65;text-wrap:pretty;">Vos données vous appartiennent. Vous gardez vos logiciels actuels, Solvex les relie.</p>
+      </div>
+      <div data-reveal="" data-delay="1" style="border-top:1px solid rgba(255,255,255,.14);padding-top:24px;">
+        <h3 style="font-size:18px;font-weight:650;margin:0 0 10px;letter-spacing:-0.01em;">Pas de jargon</h3>
+        <p style="color:#9BA09B;font-size:15.5px;margin:0;line-height:1.65;text-wrap:pretty;">Tout est expliqué dans vos mots. Vous n'avez pas besoin d'être à l'aise avec l'informatique.</p>
+      </div>
+      <div data-reveal="" data-delay="2" style="border-top:1px solid rgba(255,255,255,.14);padding-top:24px;">
+        <h3 style="font-size:18px;font-weight:650;margin:0 0 10px;letter-spacing:-0.01em;">Un interlocuteur unique</h3>
+        <p style="color:#9BA09B;font-size:15.5px;margin:0;line-height:1.65;text-wrap:pretty;">Vous parlez au fondateur, pas à un service commercial. Réponse sous 24 h.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding:130px 28px;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div data-reveal="" style="font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#6E736E;margin-bottom:18px;">Questions fréquentes</div>
+    <h2 data-reveal="" data-delay="1" style="font-size:clamp(28px,3.7vw,46px);line-height:1.12;font-weight:700;letter-spacing:-0.025em;max-width:22ch;margin:0 0 56px;">Ce qu'on nous demande le plus souvent.</h2>
+    <div style="display:flex;flex-direction:column;">
+      <div data-faq="" data-reveal="" style="border-top:1px solid rgba(255,255,255,.1);">
+        <button data-faq-btn="" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;background:none;border:0;color:#fff;text-align:left;padding:28px 4px;cursor:pointer;font-size:19px;font-weight:600;letter-spacing:-0.01em;line-height:1.4;">
+          <span>Combien ça coûte ?</span>
+          <span data-faq-icon="" style="flex:none;width:26px;height:26px;position:relative;transition:transform .45s cubic-bezier(.16,1,.3,1);">
+            <span style="position:absolute;top:12px;left:4px;width:18px;height:1.5px;background:#9BA09B;"></span>
+            <span data-faq-vert="" style="position:absolute;top:12px;left:4px;width:18px;height:1.5px;background:#9BA09B;transform:rotate(90deg);transition:opacity .35s;"></span>
+          </span>
+        </button>
+        <div data-faq-panel="" style="max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.16,1,.3,1);">
+          <p style="color:#9BA09B;font-size:16.5px;line-height:1.65;margin:0;padding:0 60px 30px 4px;text-wrap:pretty;">Ça dépend entièrement de ce qu'on met en place, c'est justement l'objet de l'audit gratuit. Vous recevez un devis clair, sans surprise, avant que quoi que ce soit ne démarre.</p>
+        </div>
+      </div>
+      <div data-faq="" data-reveal="" data-delay="1" style="border-top:1px solid rgba(255,255,255,.1);">
+        <button data-faq-btn="" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;background:none;border:0;color:#fff;text-align:left;padding:28px 4px;cursor:pointer;font-size:19px;font-weight:600;letter-spacing:-0.01em;line-height:1.4;">
+          <span>Combien de temps ça prend ?</span>
+          <span data-faq-icon="" style="flex:none;width:26px;height:26px;position:relative;transition:transform .45s cubic-bezier(.16,1,.3,1);">
+            <span style="position:absolute;top:12px;left:4px;width:18px;height:1.5px;background:#9BA09B;"></span>
+            <span data-faq-vert="" style="position:absolute;top:12px;left:4px;width:18px;height:1.5px;background:#9BA09B;transform:rotate(90deg);transition:opacity .35s;"></span>
+          </span>
+        </button>
+        <div data-faq-panel="" style="max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.16,1,.3,1);">
+          <p style="color:#9BA09B;font-size:16.5px;line-height:1.65;margin:0;padding:0 60px 30px 4px;text-wrap:pretty;">L'audit dure 30 à 45 minutes. Les premiers outils sont généralement livrés en quelques semaines, par étapes, pour que vous voyiez des résultats vite.</p>
+        </div>
+      </div>
+      <div data-faq="" data-reveal="" data-delay="2" style="border-top:1px solid rgba(255,255,255,.1);">
+        <button data-faq-btn="" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;background:none;border:0;color:#fff;text-align:left;padding:28px 4px;cursor:pointer;font-size:19px;font-weight:600;letter-spacing:-0.01em;line-height:1.4;">
+          <span>Et si je ne suis pas à l'aise avec l'informatique ?</span>
+          <span data-faq-icon="" style="flex:none;width:26px;height:26px;position:relative;transition:transform .45s cubic-bezier(.16,1,.3,1);">
+            <span style="position:absolute;top:12px;left:4px;width:18px;height:1.5px;background:#9BA09B;"></span>
+            <span data-faq-vert="" style="position:absolute;top:12px;left:4px;width:18px;height:1.5px;background:#9BA09B;transform:rotate(90deg);transition:opacity .35s;"></span>
+          </span>
+        </button>
+        <div data-faq-panel="" style="max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.16,1,.3,1);">
+          <p style="color:#9BA09B;font-size:16.5px;line-height:1.65;margin:0;padding:0 60px 30px 4px;text-wrap:pretty;">C'est le cas de la plupart des dirigeants qui nous contactent. Les outils sont conçus pour être évidents à utiliser, et vous êtes accompagné à chaque étape. Zéro jargon.</p>
+        </div>
+      </div>
+      <div data-faq="" data-reveal="" data-delay="3" style="border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);">
+        <button data-faq-btn="" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;background:none;border:0;color:#fff;text-align:left;padding:28px 4px;cursor:pointer;font-size:19px;font-weight:600;letter-spacing:-0.01em;line-height:1.4;">
+          <span>Je dois changer mes outils actuels ?</span>
+          <span data-faq-icon="" style="flex:none;width:26px;height:26px;position:relative;transition:transform .45s cubic-bezier(.16,1,.3,1);">
+            <span style="position:absolute;top:12px;left:4px;width:18px;height:1.5px;background:#9BA09B;"></span>
+            <span data-faq-vert="" style="position:absolute;top:12px;left:4px;width:18px;height:1.5px;background:#9BA09B;transform:rotate(90deg);transition:opacity .35s;"></span>
+          </span>
+        </button>
+        <div data-faq-panel="" style="max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.16,1,.3,1);">
+          <p style="color:#9BA09B;font-size:16.5px;line-height:1.65;margin:0;padding:0 60px 30px 4px;text-wrap:pretty;">Non. Le principe est de partir de ce que vous utilisez déjà et de faire le lien entre vos outils. On ne remplace que si ça vous fait clairement gagner.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding:0 28px 150px;">
+  <div data-reveal="" style="max-width:1200px;margin:0 auto;background:#fff;color:#050604;border-radius:32px;text-align:center;padding:clamp(70px,9vw,110px) 40px;">
+    <h2 style="font-size:clamp(30px,3.9vw,48px);line-height:1.1;font-weight:700;letter-spacing:-0.025em;max-width:24ch;margin:0 auto 20px;">Échangeons sur les points forts de votre entreprise et les pistes d'amélioration.</h2>
+    <p style="color:#4A4F4A;font-size:18px;max-width:50ch;margin:0 auto 38px;line-height:1.6;text-wrap:pretty;">Un échange simple pour comprendre votre organisation et voir s'il y a quelque chose à améliorer. Si ce n'est pas le cas, on vous le dira.</p>
+    <!-- LIEN DE RENDEZ-VOUS : remplacer le href par l'URL de prise de
+     rendez-vous (Google Agenda, Calendly, Cal.com). Tant qu'il est
+     vide, le bouton renvoie vers le formulaire juste en dessous. -->
+    <a class="i25" data-cal="" href="#form" style="display:inline-block;background:#050604;color:#fff;padding:16px 36px;border-radius:980px;font-size:16px;font-weight:600;text-decoration:none;white-space:nowrap;transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .2s;">Réserver un créneau</a>
+    <p style="margin:16px 0 34px;font-size:13.5px;color:#6E736E;">Choisissez directement l'horaire qui vous arrange, ou écrivez-nous ci-dessous.</p>
+    <form id="form" name="contact" method="POST" action="/merci.html" data-netlify="true" netlify-honeypot="bot-field" data-form="" style="max-width:520px;margin:0 auto;text-align:left;display:flex;flex-direction:column;gap:12px;">
+      <input type="hidden" name="form-name" value="contact">
+      <p hidden><label>Ne pas remplir : <input name="bot-field"></label></p>
+      <label for="f-nom" class="sr-only">Nom et prénom</label>
+      <input class="i26" id="f-nom" autocomplete="name" name="nom" required="" placeholder="Nom et prénom" style="width:100%;background:#F4F5F4;border:1px solid #DCDFDC;border-radius:14px;padding:15px 18px;font-size:16px;color:#050604;outline:none;transition:border-color .25s,background .25s;">
+      <label for="f-email" class="sr-only">Adresse e-mail</label>
+      <input class="i27" id="f-email" autocomplete="email" name="email" type="email" required="" placeholder="Email" style="width:100%;background:#F4F5F4;border:1px solid #DCDFDC;border-radius:14px;padding:15px 18px;font-size:16px;color:#050604;outline:none;transition:border-color .25s,background .25s;">
+      <label for="f-tel" class="sr-only">Téléphone</label>
+      <input class="i28" id="f-tel" autocomplete="tel" name="tel" placeholder="Téléphone (facultatif)" style="width:100%;background:#F4F5F4;border:1px solid #DCDFDC;border-radius:14px;padding:15px 18px;font-size:16px;color:#050604;outline:none;transition:border-color .25s,background .25s;">
+      <label for="f-activite" class="sr-only">Votre activité</label>
+      <input class="i29" id="f-activite" autocomplete="organization" name="activite" required="" placeholder="Votre activité (ex : agence immobilière)" style="width:100%;background:#F4F5F4;border:1px solid #DCDFDC;border-radius:14px;padding:15px 18px;font-size:16px;color:#050604;outline:none;transition:border-color .25s,background .25s;">
+      <button class="i30" type="submit" style="margin-top:8px;background:transparent;color:#050604;padding:16px 36px;border:1px solid #050604;border-radius:980px;font-size:16px;font-weight:600;cursor:pointer;transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .2s;">Demander un audit gratuit</button>
+      
+      <p style="margin:2px 0 0;font-size:13.5px;color:#4A4F4A;text-align:center;">Ou écrivez-nous directement à <a href="mailto:damien.nass1@gmail.com" style="color:#050604;">damien.nass1@gmail.com</a>.</p>
+      <p style="margin:8px 0 0;font-size:12.5px;color:#6E736E;line-height:1.55;text-align:center;">Vos données servent uniquement à traiter votre demande. Voir la <a href="confidentialite.html" style="color:#050604;text-decoration:underline;">politique de confidentialité</a>.</p>
+    </form>
+    <p style="margin:26px 0 0;font-size:13.5px;color:#6E736E;">Réponse sous 24 h · Grand Est</p>
+  </div>
+</section>
+
+<footer style="padding:56px 28px 64px;border-top:1px solid rgba(255,255,255,.08);">
+  <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:22px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <img src="assets/logo-solvex.png" alt="" style="height:26px;width:auto;">
+      <span style="font-size:13px;letter-spacing:4px;color:#D8DCD8;">SOLVEX AUTOMATION</span>
+    </div>
+    <a href="mailto:damien.nass1@gmail.com" style="font-size:14.5px;">damien.nass1@gmail.com</a>
+    <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+      <a href="confidentialite.html" style="font-size:13.5px;">Politique de confidentialité</a>
+      <span style="font-size:13px;color:#6E736E;">© 2026 Solvex Automation · SIRET 10363775700016 · Kingersheim (68)</span>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var S = {};
+
+    const animate = true;
+    const ease = 'cubic-bezier(.16,1,.3,1)';
+    if (animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const els = [...document.querySelectorAll('[data-reveal]')];
+      els.forEach(el => {
+        const d = (parseInt(el.dataset.delay || '0', 10)) * 110;
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(34px)';
+        el.style.transition = `opacity 1s ${ease} ${d}ms, transform 1s ${ease} ${d}ms`;
+      });
+      S.pending = new Set(els);
+      S.checkReveals = () => {
+        if (!S.pending.size) return;
+        const limit = window.innerHeight * 0.92;
+        S.pending.forEach(el => {
+          if (el.getBoundingClientRect().top < limit) {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+            S.pending.delete(el);
+          }
+        });
+      };
+      requestAnimationFrame(() => S.checkReveals());
+    }
+    const nav = document.querySelector('[data-nav]');
+    const glow = document.querySelector('[data-parallax]');
+    const hero = document.querySelector('[data-hero-inner]');
+    S.onScroll = () => {
+      const y = window.scrollY;
+      if (nav) {
+        const on = y > 24;
+        nav.style.background = on ? 'rgba(5,6,4,.72)' : 'rgba(5,6,4,0)';
+        nav.style.borderBottomColor = on ? 'rgba(255,255,255,.08)' : 'rgba(255,255,255,0)';
+        nav.style.backdropFilter = on ? 'saturate(1.5) blur(20px)' : 'none';
+        nav.style.webkitBackdropFilter = nav.style.backdropFilter;
+      }
+      if (animate) {
+        if (glow) glow.style.transform = `translateX(-50%) translateY(${y * 0.22}px)`;
+        if (hero) {
+          const p = Math.min(1, y / (window.innerHeight * 0.85));
+          hero.style.opacity = String(1 - p * 0.9);
+          hero.style.transform = `translateY(${y * 0.16}px) scale(${1 - p * 0.05})`;
+        }
+      }
+      if (S.checkReveals) S.checkReveals();
+    };
+    window.addEventListener('scroll', S.onScroll, { passive: true });
+    window.addEventListener('resize', S.onScroll, { passive: true });
+    S.onScroll();
+    const logo = document.querySelector('[data-logo3d]');
+    if (logo && animate) {
+      const wrap = logo.parentElement;
+      wrap.style.perspective = '700px';
+      logo.style.transition = 'transform .5s cubic-bezier(.16,1,.3,1),filter .4s';
+      wrap.addEventListener('pointermove', ev => {
+        const r = logo.getBoundingClientRect();
+        const dx = (ev.clientX - (r.left + r.width / 2)) / r.width;
+        const dy = (ev.clientY - (r.top + r.height / 2)) / r.height;
+        logo.style.transition = 'transform .12s linear,filter .4s';
+        logo.style.transform = `rotateY(${dx * 26}deg) rotateX(${-dy * 26}deg) scale(1.08)`;
+        logo.style.filter = 'drop-shadow(0 18px 64px rgba(255,255,255,.3))';
+      });
+      wrap.addEventListener('pointerleave', () => {
+        logo.style.transition = 'transform .7s cubic-bezier(.16,1,.3,1),filter .5s';
+        logo.style.transform = 'none';
+        logo.style.filter = 'drop-shadow(0 14px 54px rgba(255,255,255,.16))';
+      });
+      logo.addEventListener('click', () => {
+        logo.style.transition = 'transform 1.1s cubic-bezier(.16,1,.3,1)';
+        logo.style.transform = 'rotateY(360deg)';
+        setTimeout(() => { logo.style.transform = 'none'; }, 1150);
+      });
+    }
+    const menu = document.querySelector('[data-mobilemenu]');
+    const burger = document.querySelector('[data-burger]');
+    if (menu && burger) {
+      const bars = burger.querySelectorAll('[data-bar]');
+      let open = false;
+      const setOpen = v => {
+        open = v;
+        menu.style.maxHeight = v ? menu.scrollHeight + 'px' : '0px';
+        bars[0].style.transform = v ? 'translateY(3.25px) rotate(45deg)' : 'none';
+        bars[1].style.transform = v ? 'translateY(-3.25px) rotate(-45deg)' : 'none';
+      };
+      burger.addEventListener('click', () => setOpen(!open));
+      menu.querySelectorAll('[data-mlink]').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    }
+    document.querySelectorAll('[data-faq]').forEach(item => {
+      const btn = item.querySelector('[data-faq-btn]');
+      const panel = item.querySelector('[data-faq-panel]');
+      const vert = item.querySelector('[data-faq-vert]');
+      const icon = item.querySelector('[data-faq-icon]');
+      btn.addEventListener('click', () => {
+        const isOpen = panel.style.maxHeight && panel.style.maxHeight !== '0px';
+        document.querySelectorAll('[data-faq-panel]').forEach(p => { p.style.maxHeight = '0px'; });
+        document.querySelectorAll('[data-faq-vert]').forEach(v => { v.style.opacity = '1'; });
+        document.querySelectorAll('[data-faq-icon]').forEach(i => { i.style.transform = 'none'; });
+        if (!isOpen) {
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+          vert.style.opacity = '0';
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+    const gi = 1;
+    document.querySelectorAll('[data-card]').forEach(card => {
+      const g = card.querySelector('[data-glow]');
+      if (!g) return;
+      card.addEventListener('pointermove', ev => {
+        const r = card.getBoundingClientRect();
+        g.style.background = `radial-gradient(260px circle at ${ev.clientX - r.left}px ${ev.clientY - r.top}px, rgba(255,255,255,${0.07 * gi}), transparent 70%)`;
+      });
+      card.addEventListener('pointerenter', () => { g.style.opacity = '1'; });
+      card.addEventListener('pointerleave', () => { g.style.opacity = '0'; });
+    });
+  
+  window.addEventListener('pagehide', function(){
+    window.removeEventListener('scroll', S.onScroll);
+    window.removeEventListener('resize', S.onScroll);
+  });
+})();
+</script>
 </body>
 </html>
