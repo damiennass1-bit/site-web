@@ -8,6 +8,39 @@
 
 ---
 
+## Voie rapide : mettre le nouveau site en ligne aujourd'hui
+
+**Changer de site et transférer le domaine sont deux opérations
+indépendantes.** Le transfert prend environ 5 jours, mais il n'est pas un
+prérequis : il suffit de modifier les enregistrements DNS pour que
+`solvex-automation.com` pointe vers Netlify au lieu de Webador. Effet en
+quelques heures.
+
+| # | Action | Durée | Où |
+|---|---|---|---|
+| 1 | Envoyer la landing page dans `public/` | 5 min | GitHub |
+| 2 | Importer le dépôt et déployer | 10 min | Netlify |
+| 3 | Ajouter le domaine et relever les valeurs DNS | 5 min | Netlify |
+| 4 | Remplacer l'enregistrement `A` et le `CNAME www` | 10 min | Webador |
+| 5 | Propagation DNS puis activation du HTTPS | 1 à 24 h | — |
+
+À l'issue de l'étape 5, le nouveau site est en ligne sur le vrai domaine.
+
+**À l'étape 4, ne toucher qu'aux enregistrements `A` et `CNAME`.** Laisser
+les `MX` intacts : ils gèrent l'e-mail, pas le site.
+
+Si Webador refuse la modification des enregistrements DNS, basculer les
+*nameservers* du domaine vers ceux de Netlify — l'option se trouve dans le
+même écran de gestion du domaine. Il faudra alors recréer les `MX`
+manuellement si l'e-mail doit continuer de fonctionner.
+
+Le transfert du domaine (étape 3 du plan complet) et la résiliation
+(étape 7) se traitent ensuite, tranquillement, avant le 14 septembre. Lancer
+tout de même la demande de code EPP dès aujourd'hui : c'est le maillon le
+plus lent.
+
+---
+
 ## Ce que dit la situation actuelle
 
 **Le transfert du domaine est possible dès maintenant.** Le domaine a été
