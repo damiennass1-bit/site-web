@@ -15,12 +15,21 @@
 |---|---|---|
 | 1 | Landing page reconstruite en HTML statique | **fait** |
 | 2 | Déployée sur Netlify, dépôt lié en déploiement continu | **fait** |
-| 3 | DNS de `solvex-automation.com` redirigé vers Netlify | **fait** — le site public est servi par Netlify, plus par Webador |
-| 4 | Certificat HTTPS | vérification DNS réussie, émission en cours |
+| 3 | DNS redirigé vers Netlify | **fait** — le site public n'est plus servi par Webador |
+| 4 | Certificat HTTPS | **fait** — Let's Encrypt actif, renouvellement automatique |
 | 5 | `www` comme domaine principal | à faire — un clic |
-| 6 | Transfert du domaine avec le code EPP | en attente de l'e-mail Webador |
-| 7 | Google Search Console | à faire |
-| 8 | Résiliation de Webador | **après** le transfert, avant le 14 septembre |
+| 6 | Code EPP | demandé au support Webador, aucune option en libre-service |
+| 7 | Transfert du domaine | après réception du code, environ 5 jours |
+| 8 | Google Search Console | à faire |
+| 9 | Résiliation de Webador | **après** le transfert, avant le 14 septembre |
+
+Webador ne propose aucun transfert en libre-service : sous *Mon abonnement →
+Nom de domaine*, les seules actions sont « Modifier les DNS », « Modifier les
+informations » et « Annuler ». Le code EPP doit être demandé au support.
+
+**« Annuler » supprime le domaine, il ne le transfère pas.** Le contact
+propriétaire enregistré est `damien.nass1@gmail.com`, une adresse relevée :
+la demande de validation du transfert arrivera donc bien à destination.
 
 Les enregistrements DNS en place chez Webador :
 
