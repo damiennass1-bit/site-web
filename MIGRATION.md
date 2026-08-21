@@ -18,7 +18,7 @@
 | 3 | DNS redirigé vers Netlify | **fait** — le site public n'est plus servi par Webador |
 | 4 | Certificat HTTPS | **fait** — Let's Encrypt, renouvellement automatique le 19 novembre |
 | 4b | Formulaire de contact | **fait** — testé de bout en bout, notification e-mail active |
-| 5 | `www` comme domaine principal | à faire — un clic |
+| 5 | `www` comme domaine principal | **fait** — cohérent avec le lien canonique et le sitemap |
 | 6 | Code EPP | demandé au support Webador, aucune option en libre-service |
 | 7 | Transfert du domaine | après réception du code, environ 5 jours |
 | 8 | Google Search Console | **fait** — sitemap soumis, 3 pages indexées |
