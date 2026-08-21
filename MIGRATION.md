@@ -20,7 +20,7 @@
 | 5 | `www` comme domaine principal | à faire — un clic |
 | 6 | Code EPP | demandé au support Webador, aucune option en libre-service |
 | 7 | Transfert du domaine | après réception du code, environ 5 jours |
-| 8 | Google Search Console | à faire |
+| 8 | Google Search Console | **fait** — sitemap soumis, 3 pages indexées |
 | 9 | Résiliation de Webador | **après** le transfert, avant le 14 septembre |
 
 Webador ne propose aucun transfert en libre-service : sous *Mon abonnement →
@@ -30,6 +30,10 @@ informations » et « Annuler ». Le code EPP doit être demandé au support.
 **« Annuler » supprime le domaine, il ne le transfère pas.** Le contact
 propriétaire enregistré est `damien.nass1@gmail.com`, une adresse relevée :
 la demande de validation du transfert arrivera donc bien à destination.
+
+Sur une propriété « domaine » de la Search Console, le champ des sitemaps
+attend l'URL complète — `sitemap.xml` seul est refusé, Google n'ayant aucun
+préfixe à appliquer.
 
 Les enregistrements DNS en place chez Webador :
 
