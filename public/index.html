@@ -410,7 +410,7 @@ transition-duration:.01ms!important;scroll-behavior:auto!important;}}
     <!-- LIEN DE RENDEZ-VOUS : page de prise de rendez-vous Google Agenda. -->
     <a class="i25" data-cal="" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ39Ap9pxC-1q8In9kt2xhWA2aaFhLsPDws9xGSKhAAElmFwMA0Ip3WShSQ0QvMRUE_eOlF3DXeY" target="_blank" rel="noopener" style="display:inline-block;background:#050604;color:#fff;padding:16px 36px;border-radius:980px;font-size:16px;font-weight:600;text-decoration:none;white-space:nowrap;transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .2s;">Réserver un créneau</a>
     <p style="margin:16px 0 34px;font-size:13.5px;color:#6E736E;">Choisissez directement l'horaire qui vous arrange, ou écrivez-nous ci-dessous.</p>
-    <form id="form" name="contact" method="POST" action="/merci.html" data-netlify="true" netlify-honeypot="bot-field" data-form="" style="max-width:520px;margin:0 auto;text-align:left;display:flex;flex-direction:column;gap:12px;">
+    <form id="form" name="contact" method="POST" action="merci.html" data-netlify="true" netlify-honeypot="bot-field" data-form="" style="max-width:520px;margin:0 auto;text-align:left;display:flex;flex-direction:column;gap:12px;">
       <input type="hidden" name="form-name" value="contact">
       <p hidden><label>Ne pas remplir : <input name="bot-field"></label></p>
       <label for="f-nom" class="sr-only">Nom et prénom</label>
@@ -444,6 +444,29 @@ transition-duration:.01ms!important;scroll-behavior:auto!important;}}
   </div>
 </footer>
 <script>
+(function(){
+  // Le formulaire est traité par Netlify Forms, qui n'existe que sur Netlify.
+  // Ailleurs (aperçu GitHub Pages, ouverture du fichier en local), l'envoi
+  // échouerait sans rien dire : on bascule alors sur la messagerie, plutôt
+  // que de laisser une demande se perdre.
+  var f = document.querySelector('form[data-netlify]');
+  var h = location.hostname;
+  var surNetlify = /\.netlify\.(app|com)$/.test(h) || /solvex-automation\.com$/.test(h);
+  if (f && !surNetlify) {
+    f.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var d = new FormData(f);
+      var corps = 'Nom : ' + (d.get('nom') || '') +
+        '\nEmail : ' + (d.get('email') || '') +
+        '\nTéléphone : ' + (d.get('tel') || 'non renseigné') +
+        '\nActivité : ' + (d.get('activite') || '');
+      location.href = 'mailto:damien.nass1@gmail.com?subject=' +
+        encodeURIComponent("Demande d'audit Solvex") +
+        '&body=' + encodeURIComponent(corps);
+    });
+  }
+})();
+
 (function(){
   var S = {};
 

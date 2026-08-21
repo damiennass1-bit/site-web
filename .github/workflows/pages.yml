@@ -1,0 +1,49 @@
+# Publie le contenu de public/ sur GitHub Pages.
+#
+# Sert d'aperçu en ligne immédiat : GitHub héberge le site sans qu'aucun
+# téléversement ne parte de la machine de développement. L'hébergement de
+# production reste Netlify, qui seul gère le formulaire de contact et les
+# redirections 301 du fichier _redirects.
+
+name: Déployer sur GitHub Pages
+
+on:
+  push:
+    branches: [claude/webador-migration-ysovxe]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Une seule publication à la fois, sans interrompre celle qui est en cours.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deployer:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Configurer Pages
+        # enablement active Pages au premier passage, ce qui évite d'avoir à
+        # le faire à la main dans les réglages du dépôt.
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Empaqueter le dossier public
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Déployer
+        id: deploiement
+        uses: actions/deploy-pages@v4
