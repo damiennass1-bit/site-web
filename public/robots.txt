@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Décommenter et remplacer par ton domaine une fois le site en ligne :
+# Sitemap: https://TON-DOMAINE.fr/sitemap.xml

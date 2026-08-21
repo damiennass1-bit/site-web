@@ -1,0 +1,28 @@
+# Configuration Netlify
+# Doc : https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # Dossier publié en ligne. Tout ce qui est dans public/ devient le site.
+  # Pas d'étape de build : le site est en HTML/CSS/JS statique.
+  publish = "public"
+
+# En-têtes de sécurité appliqués à toutes les pages
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# Cache long pour les images, polices, CSS et JS versionnés
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# public/404.html est servi automatiquement par Netlify pour les pages
+# introuvables : aucune règle de redirection n'est nécessaire.
+#
+# Pour rediriger les anciennes URLs Webador, créer un fichier
+# public/_redirects (voir MIGRATION.md, étape 6).
