@@ -1,0 +1,16 @@
+{
+  "name": "solvex-mesure",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "CRM Mesure agents vocaux + CRM Mesure prospection consulting (Solvex Automation)",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:test": "MESURE_BACKEND=memory node scripts/build.mjs",
+    "test": "node --test tests/unit/*.test.mjs",
+    "test:e2e": "MESURE_BACKEND=memory node scripts/build.mjs && node tests/e2e/run.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.117.2"
+  }
+}

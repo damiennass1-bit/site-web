@@ -1,0 +1,26 @@
+# Site Netlify « solvex-mesure » (distinct du site vitrine à la racine du dépôt)
+# Variables d'environnement requises (définies dans Netlify, jamais dans git) :
+#   SUPABASE_URL, SUPABASE_ANON_KEY  — et optionnellement MESURE_ALLOWED_EMAIL
+
+[build]
+  command = "npm ci && npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Le navigateur ne peut parler qu'à ce site et à Supabase : aucun autre envoi possible.
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; form-action 'self'; frame-ancestors 'none'; base-uri 'self'"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+    X-Robots-Tag = "noindex, nofollow"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+[[headers]]
+  for = "/config.js"
+  [headers.values]
+    Cache-Control = "no-cache"

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#1d3f8f">
+  <title>Solvex Mesure</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="entete" id="topbar" hidden>
+  <header class="topbar">
+    <a class="brand" href="#/vocal/file" aria-label="Solvex Mesure"><img src="favicon.svg" alt="" width="22" height="22"><span class="long">Solvex <span>Mesure</span></span></a>
+    <nav class="crm-switch" aria-label="Choix du CRM">
+      <a href="#/vocal/file" data-crm="vocal">Agents vocaux</a>
+      <a href="#/conso/semaine" data-crm="conso">Consulting</a>
+    </nav>
+    <button type="button" class="link logout" id="logout">Déconnexion</button>
+  </header>
+  <nav class="subnav" id="subnav" aria-label="Écrans du CRM"></nav>
+  </div>
+
+  <main id="app" tabindex="-1">
+    <p class="chargement">Chargement…</p>
+  </main>
+
+  <section class="login" id="login" hidden>
+    <div class="login-card">
+      <h1>Solvex <span>Mesure</span></h1>
+      <p id="login-titre">Accès réservé.</p>
+      <form id="login-form">
+        <label>Adresse e-mail <input type="email" name="email" id="login-email" required autocomplete="email"></label>
+        <label>Mot de passe (le même que Solvex OS) <input type="password" name="password" autocomplete="current-password"></label>
+        <button type="submit" class="btn primary">Se connecter</button>
+        <button type="button" class="btn" id="login-lien">Pas de mot de passe ? Recevoir un lien par mail</button>
+      </form>
+      <form id="code-form" hidden>
+        <p class="ok-msg">Lien envoyé. Clique dessus depuis ta boîte mail, ou saisis le code à 6 chiffres s'il figure dans le mail.</p>
+        <label>Code reçu <input name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6,8}"></label>
+        <button type="submit" class="btn">Valider le code</button>
+      </form>
+      <p class="login-err" id="login-err" role="alert"></p>
+    </div>
+  </section>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+
+  <script src="config.js"></script>
+  <script src="vendor/supabase.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
