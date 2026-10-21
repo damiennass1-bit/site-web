@@ -3,7 +3,7 @@
 //  - memory   : base en mémoire, uniquement pour les tests automatisés (jamais en production)
 //
 // Interface : all(table) · insert(table, rows) · update(table, id, patch) · remove(table, id)
-//             removeTest(table) · auth.{session, onChange, sendLink, verifyCode, signOut}
+//             removeTest(table) · auth.{session, onChange, signInPassword, sendLink, verifyCode, signOut}
 
 const SEED = {
   mesure_vocal_phases: [
@@ -93,6 +93,7 @@ function memoryBackend() {
       onChange() {},
       async sendLink() {},
       async verifyCode() {},
+      async signInPassword() {},
       async signOut() { location.reload(); },
     },
   };
@@ -143,6 +144,7 @@ function supabaseBackend(cfg) {
         }));
       },
       async verifyCode(email, token) { check(await client.auth.verifyOtp({ email, token, type: 'email' })); },
+      async signInPassword(email, password) { check(await client.auth.signInWithPassword({ email, password })); },
       async signOut() { await client.auth.signOut(); location.reload(); },
     },
   };

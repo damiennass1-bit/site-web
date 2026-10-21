@@ -13,14 +13,17 @@ simple lien `tel:` qui ouvre le téléphone ; les cases « SMS envoyé » et « 
 *après* avoir agi soi-même. La politique de sécurité du navigateur (CSP dans `netlify.toml`)
 n'autorise de toute façon que le site lui-même et Supabase.
 
-- Production : https://solvex-mesure.netlify.app (site Netlify `solvex-mesure`)
+- Deux sites Netlify construits depuis ce même code (variable `MESURE_CRM`) :
+  - **CRM agents vocaux** : https://solvex-crm-agent-vocal.netlify.app (`MESURE_CRM=vocal`)
+  - **CRM consulting** : https://solvex-crm-consulting.netlify.app (`MESURE_CRM=conso`)
+  - sans `MESURE_CRM`, l'app affiche les deux CRM avec un menu pour passer de l'un à l'autre
 - Base : projet Supabase « Solvex OS » (`kjrydhhiodvechbievod`), tables `mesure_vocal_*` et `mesure_conso_*` uniquement
 
 ## Connexion
 
-Lien magique Supabase réservé à `damien.nass1@gmail.com` : saisir l'adresse, cliquer sur le lien reçu
-(ou saisir le code à 6 chiffres s'il figure dans le mail). Toute autre adresse est refusée par
-l'interface **et** par la base (RLS).
+Compte Supabase de Solvex OS réservé à `damien.nass1@gmail.com` : adresse + **le même mot de passe que
+Solvex OS**, ou à défaut « Recevoir un lien par mail » (lien magique, ou code à 6 chiffres s'il figure
+dans le mail). Toute autre adresse est refusée par l'interface **et** par la base (RLS).
 
 ## Utilisation
 
@@ -146,14 +149,22 @@ supabase-js et écrit `config.js` depuis les variables d'environnement).
 
 ## Déploiement
 
-Variables d'environnement Netlify (déjà créées sur le site `solvex-mesure`) : `SUPABASE_URL`,
-`SUPABASE_ANON_KEY` (clé publishable, protégée par RLS), `MESURE_ALLOWED_EMAIL`. Aucune n'est dans git.
+Variables d'environnement Netlify (déjà créées sur les deux sites) : `SUPABASE_URL`,
+`SUPABASE_ANON_KEY` (clé publishable, protégée par RLS), `MESURE_ALLOWED_EMAIL`, `MESURE_CRM`. Aucune n'est dans git.
+
+| Site | Site ID | `MESURE_CRM` |
+|---|---|---|
+| solvex-crm-agent-vocal | `e39cfebf-d58a-4034-b7cd-839d42e065c2` | `vocal` |
+| solvex-crm-consulting | `cde44730-d474-4f01-a06d-015cb5c6b5d5` | `conso` |
+
+Depuis un poste connecté à Netlify :
 
 ```bash
 cd solvex-mesure
-npx netlify-cli@17 link --id e39cfebf-d58a-4034-b7cd-839d42e065c2
-npx netlify-cli@17 deploy --build --prod
+npx netlify-cli@17 deploy --build --prod --site e39cfebf-d58a-4034-b7cd-839d42e065c2
+npx netlify-cli@17 deploy --build --prod --site cde44730-d474-4f01-a06d-015cb5c6b5d5
 ```
 
-Une seule fois, dans Supabase → *Authentication* → *URL Configuration* → *Redirect URLs*, ajouter
-`https://solvex-mesure.netlify.app/**` pour que le lien magique ramène sur l'app.
+Pour le lien magique (pas nécessaire avec le mot de passe), ajouter une fois dans Supabase →
+*Authentication* → *URL Configuration* → *Redirect URLs* : `https://solvex-crm-agent-vocal.netlify.app/**`
+et `https://solvex-crm-consulting.netlify.app/**`.

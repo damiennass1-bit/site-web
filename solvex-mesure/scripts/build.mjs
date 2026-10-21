@@ -35,6 +35,8 @@ const config = {
   supabaseUrl: backend === 'supabase' ? env.SUPABASE_URL : '',
   supabaseKey: backend === 'supabase' ? env.SUPABASE_ANON_KEY : '',
   allowedEmail: (env.MESURE_ALLOWED_EMAIL || 'damien.nass1@gmail.com').toLowerCase(),
+  // vocal | conso : le site n'affiche que ce CRM ; vide : les deux
+  crm: ['vocal', 'conso'].includes(env.MESURE_CRM) ? env.MESURE_CRM : '',
 };
 writeFileSync(join(dist, 'config.js'), `window.MESURE_CONFIG = ${JSON.stringify(config)};\n`);
-console.log(`Build OK (${backend}) → dist/`);
+console.log(`Build OK (${backend}${config.crm ? `, CRM ${config.crm}` : ''}) → dist/`);

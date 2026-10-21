@@ -58,6 +58,11 @@
 23. **Déploiement** : le site Netlify `solvex-mesure` et ses variables ont été créés depuis cette session,
     mais l'envoi du build est bloqué par la politique réseau du conteneur (hôte `netlify-mcp.netlify.app`
     refusé, de même que l'accès direct à `*.supabase.co`). La commande exacte est dans le README.
+25. **Deux web apps, un seul code** : à la demande de Damien, chaque CRM a son propre site Netlify
+    (`solvex-crm-agent-vocal`, `solvex-crm-consulting`). La variable `MESURE_CRM` choisit le CRM affiché ;
+    le menu de bascule est masqué. Les données restent séparées (tables distinctes) comme avant.
+26. **Connexion par mot de passe** ajoutée en plus du lien magique : même compte et même mot de passe que
+    Solvex OS (même projet Supabase). Évite d'avoir à configurer les URL de redirection Supabase.
 24. **Problèmes préexistants** de Solvex OS relevés par l'audit Supabase (table `voca_backup_20260911`
     sans RLS, fonction `handle_new_user`) : signalés dans `docs/tables_apres.md`, **non corrigés** (interdiction
     de toucher aux tables existantes).

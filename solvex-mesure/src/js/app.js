@@ -48,9 +48,16 @@ function parseHash() {
   return { crm, ecran, params };
 }
 
+// Un site peut n'afficher qu'un seul CRM (MESURE_CRM = vocal | conso au build)
+const seul = CRMS[cfg.crm] ? cfg.crm : null;
+
 async function route() {
   let { crm, ecran, params } = parseHash();
-  if (!CRMS[crm]) { location.replace('#/vocal/file'); return; }
+  if (!CRMS[crm] || (seul && crm !== seul)) {
+    const c = seul || 'vocal';
+    location.replace(`#/${c}/${CRMS[c].ecrans[0][0]}`);
+    return;
+  }
   const def = CRMS[crm];
   const ids = [...def.ecrans.map(([id]) => id), ...(def.extra || [])];
   if (!ids.includes(ecran)) { ecran = def.ecrans[0][0]; history.replaceState(null, '', `#/${crm}/${ecran}`); }
@@ -106,6 +113,7 @@ function allowed(session) {
 function start() {
   if (started) return;
   started = true;
+  if (seul) document.querySelector('.crm-switch').hidden = true;
   document.getElementById('login').hidden = true;
   document.getElementById('topbar').hidden = false;
   app.hidden = false;
@@ -114,6 +122,12 @@ function start() {
 }
 
 async function boot() {
+  if (seul) {
+    const nom = seul === 'vocal' ? 'CRM agents vocaux' : 'CRM consulting';
+    document.querySelector('.brand .long').innerHTML = `Solvex <span>${nom}</span>`;
+    document.querySelector('.brand').href = `#/${seul}/${CRMS[seul].ecrans[0][0]}`;
+    document.querySelector('.login-card h1').innerHTML = `Solvex <span>${nom}</span>`;
+  }
   try {
     db = createDb(cfg);
   } catch (e) {
@@ -126,14 +140,27 @@ async function boot() {
   const loginForm = document.getElementById('login-form');
   const codeForm = document.getElementById('code-form');
   const err = document.getElementById('login-err');
-  loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  const emailAutorise = () => {
     const email = loginForm.email.value.trim().toLowerCase();
     err.textContent = '';
     if (email !== String(cfg.allowedEmail).toLowerCase()) {
       err.textContent = 'Cette adresse n’a pas accès à Solvex Mesure.';
-      return;
+      return null;
     }
+    return email;
+  };
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = emailAutorise();
+    if (!email) return;
+    if (!loginForm.password.value) { err.textContent = 'Saisis ton mot de passe, ou demande un lien par mail.'; return; }
+    try {
+      await db.auth.signInPassword(email, loginForm.password.value);
+    } catch (ex) { err.textContent = `Connexion refusée : ${ex.message}`; }
+  });
+  document.getElementById('login-lien').addEventListener('click', async () => {
+    const email = emailAutorise();
+    if (!email) return;
     try {
       await db.auth.sendLink(email);
       codeForm.hidden = false;

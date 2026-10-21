@@ -29,10 +29,12 @@
   <section class="login" id="login" hidden>
     <div class="login-card">
       <h1>Solvex <span>Mesure</span></h1>
-      <p>Accès réservé. Saisis ton adresse pour recevoir un lien de connexion.</p>
+      <p id="login-titre">Accès réservé.</p>
       <form id="login-form">
         <label>Adresse e-mail <input type="email" name="email" id="login-email" required autocomplete="email"></label>
-        <button type="submit" class="btn primary">Recevoir le lien de connexion</button>
+        <label>Mot de passe (le même que Solvex OS) <input type="password" name="password" autocomplete="current-password"></label>
+        <button type="submit" class="btn primary">Se connecter</button>
+        <button type="button" class="btn" id="login-lien">Pas de mot de passe ? Recevoir un lien par mail</button>
       </form>
       <form id="code-form" hidden>
         <p class="ok-msg">Lien envoyé. Clique dessus depuis ta boîte mail, ou saisis le code à 6 chiffres s'il figure dans le mail.</p>
