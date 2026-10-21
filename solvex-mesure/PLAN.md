@@ -13,5 +13,5 @@
 - [x] 11. Données de test (« TEST ») + bouton « Vider les données de test »
 - [x] 12. Tests unitaires des formules (calculs à la main) + tests navigateur headless (Playwright)
 - [x] 13. Vérifications finales : aucun secret dans git, RLS active, aucun envoi externe, tables existantes intactes (avant / après)
-- [ ] 14. Déploiement Netlify `solvex-mesure`, test de l'URL en production — site + variables créés ; envoi du build bloqué par le réseau du conteneur (commande dans le README)
+- [x] 14. Déploiement Netlify (un site par CRM), test des URL en production
 - [x] 15. README.md, DECISIONS.md, compte rendu final

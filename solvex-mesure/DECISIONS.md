@@ -55,9 +55,10 @@
     qu'un PDF généré, pour éviter une dépendance.
 22. **Données importées dont le nom commence par « TEST »** sont marquées `est_test` : elles partent aussi avec
     « Vider les données de test ».
-23. **Déploiement** : le site Netlify `solvex-mesure` et ses variables ont été créés depuis cette session,
-    mais l'envoi du build est bloqué par la politique réseau du conteneur (hôte `netlify-mcp.netlify.app`
-    refusé, de même que l'accès direct à `*.supabase.co`). La commande exacte est dans le README.
+23. **Déploiement** : le build sur les serveurs Netlify a échoué sans journal accessible (alors que le même
+    build passe en local). Les deux sites ont donc été construits ici (`MESURE_CRM=vocal` / `conso`), testés,
+    puis envoyés déjà construits (zip avec `publish = "."`, mêmes en-têtes de sécurité). Le `config.js` ainsi
+    publié contient l'URL et la clé publishable Supabase, publiques par nature ; rien de cela n'est dans git.
 25. **Deux web apps, un seul code** : à la demande de Damien, chaque CRM a son propre site Netlify
     (`solvex-crm-agent-vocal`, `solvex-crm-consulting`). La variable `MESURE_CRM` choisit le CRM affiché ;
     le menu de bascule est masqué. Les données restent séparées (tables distinctes) comme avant.
