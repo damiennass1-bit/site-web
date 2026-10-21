@@ -110,7 +110,8 @@ export function statsReseau(reseau, rdvs, entreprises, heures = 0) {
     sollicites,
     recommandations,
     rdv: rdvReseau.length,
-    taux: { rdvParSollicite: { n: rdvReseau.length, d: sollicites } },
+    // pas un pourcentage : un RDV peut venir d'une recommandation sans que la personne ait été sollicitée
+    rdvParSollicite: sollicites ? rdvReseau.length / sollicites : null,
     rdvParRecommandation: recommandations ? rdvReseau.length / recommandations : null,
     heures: Number(heures) || 0,
     rdvParHeure: Number(heures) > 0 ? rdvReseau.length / Number(heures) : null,

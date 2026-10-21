@@ -76,6 +76,6 @@ test('réseau chaud : sollicités, recommandations, RDV par recommandation', () 
   assert.ok(Math.abs(s.rdvParRecommandation - 2 / 3) < 1e-9);
   assert.equal(s.rdvParHeure, 1);
   assert.equal(s.panierMoyen, 9000);
-  assert.equal(pct(s.taux.rdvParSollicite.n, s.taux.rdvParSollicite.d), '100 % (2/2)');
+  assert.equal(s.rdvParSollicite, 1); // 2 RDV / 2 sollicités
   assert.deepEqual(aRelancer(reseau, '2026-11-01').map((p) => p.id), ['r1']);
 });
