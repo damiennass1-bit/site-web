@@ -8,6 +8,14 @@ hébergé sur Netlify, en remplacement du site Webador.
 ```
 public/                  ← dossier publié en ligne
 ├── index.html           ← page d'accueil (CSS et JS intégrés)
+├── logiciel-sur-mesure-btp-mulhouse/, automatisation-ia-pme-mulhouse/,
+│   agent-vocal-artisans/, creation-site-web-artisans-mulhouse/,
+│   agence-transformation-digitale-mulhouse/ (page principale),
+│   transformation-digitale-*/ et digitalisation-entreprise-haut-rhin/
+│   (secteurs et zones), a-propos/, blog/ ← pages dédiées (un index.html par dossier,
+│                           CSS intégré, aucun JavaScript, données
+│                           structurées JSON-LD dans le <head>)
+├── llms.txt             ← présentation du site pour les assistants IA
 ├── confidentialite.html ← politique de confidentialité
 ├── merci.html           ← confirmation d'envoi du formulaire
 ├── 404.html             ← page d'erreur

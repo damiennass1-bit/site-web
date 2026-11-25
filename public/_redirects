@@ -1,16 +1,13 @@
-# Redirections des anciennes URLs Webador vers le nouveau site.
-# Netlify lit ce fichier automatiquement (il doit rester dans public/).
-# Le code 301 = « déplacé définitivement » : c'est lui qui transmet le
-# référencement acquis à la nouvelle adresse.
-#
-# Les URLs de gauche sont celles réellement indexées par Google au
-# 21 août 2026 (recherche « site:solvex-automation.com »). Les ancres de
-# droite correspondent aux sections de la nouvelle page d'accueil.
+# Redirections lues automatiquement par Netlify (ce fichier doit rester dans public/).
+# Le code 301 = « déplacé définitivement » : il transmet le référencement acquis
+# à la nouvelle adresse. Le « ! » force la règle même si un fichier existe.
 
-/nos-solutions     /#projets     301
-/a-propos          /#methode     301
+# Domaine principal : www. L'adresse sans www renvoie vers la même page avec www.
+https://solvex-automation.com/*      https://www.solvex-automation.com/:splat   301!
+http://solvex-automation.com/*       https://www.solvex-automation.com/:splat   301!
 
-# Variantes avec barre oblique finale, au cas où des liens externes
-# pointeraient dessus.
-/nos-solutions/    /#projets     301
-/a-propos/         /#methode     301
+# Anciennes URLs Webador (indexées par Google au 21 août 2026).
+# /a-propos existe désormais comme vraie page (/a-propos/index.html) : son
+# ancienne redirection vers la page d'accueil est supprimée.
+/nos-solutions     /#services        301
+/nos-solutions/    /#services        301
