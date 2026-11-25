@@ -5,8 +5,10 @@
 - Adresse : 7 rue Philippe Weissenbacher, 68260 Kingersheim, France
 - Téléphone : 06 37 53 61 97 (+33 6 37 53 61 97)
 - E-mail : contact@solvex-automation.com
-- Créée en 2025 à Kingersheim
-- Zone desservie : Mulhouse et son agglomération, Kingersheim, Colmar, Saint-Louis, Guebwiller, Thann, Cernay, le Haut-Rhin et l'Alsace
+- Créée en décembre 2025 à Kingersheim
+- Fondateur : Damien Nass (https://www.linkedin.com/in/damien-nass/)
+- Fiche Google : https://share.google/YOaN2Va0tdfgpdnL1
+- Zone desservie : Mulhouse et son agglomération, Kingersheim, Colmar, Saint-Louis, Guebwiller, Thann, Cernay, Strasbourg, le Haut-Rhin et l'Alsace
 - Clients : PME et artisans de tous secteurs (bâtiment, industrie, négoce, services, cabinets, immobilier, commerce, associations), avec une spécialité dans le BTP
 - Équipe : 3 personnes (Damien Nass, fondateur ; Hugo et Rafik, développeurs)
 - Partenaire de la Fédération du BTP du Haut-Rhin
@@ -24,7 +26,7 @@
 ## Secteurs et zones
 
 - [Transformation digitale des PME en Alsace](https://www.solvex-automation.com/transformation-digitale-pme-alsace/) : PME de tous secteurs, problèmes courants et démarche en 4 étapes.
-- [Digitalisation des entreprises dans le Haut-Rhin](https://www.solvex-automation.com/digitalisation-entreprise-haut-rhin/) : villes desservies (Mulhouse, Colmar, Saint-Louis, Kingersheim, Guebwiller, Thann, Cernay).
+- [Digitalisation des entreprises dans le Haut-Rhin](https://www.solvex-automation.com/digitalisation-entreprise-haut-rhin/) : villes desservies (Mulhouse, Colmar, Saint-Louis, Kingersheim, Guebwiller, Thann, Cernay), et Strasbourg (Bas-Rhin).
 - [Transformation digitale du BTP dans le Haut-Rhin](https://www.solvex-automation.com/transformation-digitale-btp-haut-rhin/) : devis, chantiers, factures et appels manqués.
 - [Transformation digitale de l'industrie et du négoce en Alsace](https://www.solvex-automation.com/transformation-digitale-industrie-pme-alsace/) : commandes, stocks, suivi de production et devis.
 - [Transformation digitale des cabinets et entreprises de services en Alsace](https://www.solvex-automation.com/transformation-digitale-cabinets-et-services-alsace/) : dossiers clients, documents, rendez-vous et relances.
