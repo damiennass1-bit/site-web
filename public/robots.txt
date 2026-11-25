@@ -1,7 +1,35 @@
+# Tous les robots sont autorisés, y compris ceux des moteurs de recherche
+# et des assistants IA, pour que le site puisse être cité dans leurs réponses.
 User-agent: *
 Allow: /
-
-# La page de confirmation d'envoi n'a pas vocation à être indexée.
 Disallow: /merci.html
+
+# Robots des assistants IA, autorisés explicitement.
+User-agent: GPTBot
+Allow: /
+Disallow: /merci.html
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /merci.html
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /merci.html
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /merci.html
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /merci.html
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /merci.html
+
+User-agent: Google-Extended
+Allow: /
 
 Sitemap: https://www.solvex-automation.com/sitemap.xml

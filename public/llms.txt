@@ -1,0 +1,28 @@
+# Solvex Automation
+
+> Solvex Automation est une agence de transformation digitale sur mesure installée à Kingersheim, près de Mulhouse (Haut-Rhin) : sites web, logiciels, automatisations avec l'IA et agents vocaux pour les PME et les artisans.
+
+- Adresse : 7 rue Philippe Weissenbacher, 68260 Kingersheim, France
+- Téléphone : 06 37 53 61 97 (+33 6 37 53 61 97)
+- E-mail : contact@solvex-automation.com
+- Zone desservie : Kingersheim, Mulhouse et son agglomération, Haut-Rhin, Alsace
+- Équipe : 3 personnes (Damien Nass, fondateur ; Hugo et Rafik, développeurs)
+- Partenaire de la Fédération du BTP du Haut-Rhin
+- Premier échange gratuit de 30 à 45 minutes, sans engagement ; devis écrit avant tout démarrage ; réponse sous 24 heures
+- SIRET : 10363775700016
+
+## Services
+
+- [Logiciel sur mesure pour les PME du BTP](https://www.solvex-automation.com/logiciel-sur-mesure-btp-mulhouse/) : chantiers, devis, factures, planning des employés et rentabilité réunis au même endroit, accessibles du bureau comme du chantier.
+- [Automatisation et intelligence artificielle pour les PME](https://www.solvex-automation.com/automatisation-ia-pme-mulhouse/) : suppression de la double saisie, relance des devis, tri des factures, suivi des demandes.
+- [Agent vocal IA pour artisans](https://www.solvex-automation.com/agent-vocal-artisans/) : un assistant téléphonique qui répond quand l'artisan est sur le chantier, note la demande et prend les rendez-vous.
+- [Création de site web pour artisans et PME](https://www.solvex-automation.com/creation-site-web-artisans-mulhouse/) : sites rapides, pensés pour le référencement local et les demandes de devis.
+
+## À propos
+
+- [Qui sommes-nous](https://www.solvex-automation.com/a-propos/) : l'équipe, l'adresse, les engagements et le partenariat avec la Fédération du BTP du Haut-Rhin.
+- [Page d'accueil](https://www.solvex-automation.com/) : méthode (écoute, analyse, co-construction), réalisations et contact.
+
+## Articles
+
+- [Comment éviter la double saisie des devis dans une PME du bâtiment](https://www.solvex-automation.com/blog/eviter-double-saisie-devis-btp/) : une seule saisie, des outils reliés, et 5 étapes concrètes.
